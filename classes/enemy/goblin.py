@@ -5,17 +5,20 @@ class BasicGoblin(enemy.Enemy):
     Your basic goblin. Very weak in mind and physique, but strong in
     body odor.
     '''
-    def __init__(self, name=None, MAX_HP=1, MAX_STAM=1):
+    def __init__(self, name=None):
         self.id = 'Basic Goblin'
 
-        super().__init__(name, MAX_HP, MAX_STAM)
+        super().__init__(name)
 
-    def _setup_HP(self, HP):
-        return HP
+    def _setup_stats(self):
+        HP = 1
+        ATT = 1
+        DEF = 1
+        MAG = 1
+        RES = 1
+        INIT = 10
 
-    def _setup_STAM(self, STAM):
-        return STAM
-
+        return HP, ATT, DEF, MAG, RES, INIT
 
 class TankGoblin(enemy.Enemy):
     '''
@@ -26,8 +29,12 @@ class TankGoblin(enemy.Enemy):
 
         super().__init__(name, MAX_HP, MAX_STAM)
 
-    def _setup_HP(self, HP):
-        return HP
+    def _setup_stats(self):
+        HP = 5
+        ATT = 1
+        DEF = 3
+        MAG = 1
+        RES = 2
+        INIT = 15
 
-    def _setup_STAM(self, STAM):
-        return STAM
+        return HP, ATT, DEF, MAG, RES, INIT
