@@ -24,23 +24,8 @@ def test_string(string, expection):
         return False
         
 def test_int(string, expection):
-    
-    if expection == "None":
-        try:
-            val = int(string)
-            return True
-        except ValueError:
-            print("You have to insert a number.")
-            return False
-    
-    try:
-        val = int(string)
-        if val in expection:
-            return True
-        if val in expection:
-            print("Your input wasnt valid.")
-            return False
-    except ValueError:
-        print("You have to insert a number.")
+    if string in expection:
+        return True
+    else:
+        print("Your input wasnt valid.")
         return False
-            

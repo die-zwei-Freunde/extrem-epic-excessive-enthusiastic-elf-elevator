@@ -28,10 +28,10 @@ def setup_player():
     returns a list with player objects"""
     
     player_quantity = input("How many players are you? ")
-    test = inp.test_int(player_quantity, "None")
+    test = inp.test_int(player_quantity, ['1','2','3','4','5','6','7','8','9','10'])
     while test == False:    
         player_quantity = input("Try again. How many want to play? ")
-        test = inp.test_int(player_quantity, "None")
+        test = inp.test_int(player_quantity, ['1','2','3','4','5','6','7','8','9','10'])
         
     player_quantity = int(player_quantity)
     players = []
@@ -83,13 +83,13 @@ def setup_world():
         print(val, "[{}]".format(i+1))
     
     quest = input("Which of these quests you wanna play? [1,2] ")
-    test = inp.test_int(quest, [1, 2])
+    test = inp.test_int(quest, ['1', '2'])
     while test == False:
         print("The quests are:")
         for i, val in enumerate(questlist):
             print(val, "[{}]".format(i+1))
         quest = input("Which of these quests you wanna play? [1,2] ")
-        test = inp.test_int(quest, [1, 2])
+        test = inp.test_int(quest, ['1', '2'])
     quest = int(quest)
     
     
