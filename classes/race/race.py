@@ -5,17 +5,14 @@ class Race():
     '''
     def __init__(self, verbose=False):
         self.verbose = verbose
-        self.HP, self.STAM = self._setup_stats()
+        self.stats = self._setup_stats()
 
     def _setup_stats(self):
         ''' Setup base stats for the race'''
         raise NotImplementedError()
 
-    def get_HP(self):
-        return self.HP
-
-    def get_STAM(self):
-        return self.STAM
+    def get_base_stats(self):
+        return self.stats
 
     def set_HP(self):
         ''' YOU SHOULD NOT MESS WITH THE BASE STATS'''
@@ -33,9 +30,14 @@ class Orc(Race):
         super().__init__()
 
     def _setup_stats(self):
-        HP = 2
-        STAM = 1
-        return HP, STAM
+        HP = 4
+        ATT = 5
+        DEF = 3
+        MAG = 1
+        RES = 2
+        INIT = 6
+
+        return HP, ATT, DEF, MAG, RES, INIT 
   
     def __repr__(self):
          return 'Orc'
@@ -48,9 +50,14 @@ class Human(Race):
         super().__init__(verbose=False)
 
     def _setup_stats(self):
-        HP = 1
-        STAM = 2
-        return HP, STAM
+        HP = 2
+        ATT = 4
+        DEF = 3
+        MAG = 3
+        RES = 4
+        INIT = 4
+
+        return HP, ATT, DEF, MAG, RES, INIT 
 
     def __repr__(self):
          return 'Human'

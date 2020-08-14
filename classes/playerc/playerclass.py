@@ -1,6 +1,6 @@
 """Playerclass"""
-from classes.race import *
-from classes.alignment import *
+from classes.race.race import *
+from classes.alignment.alignment import *
 
 class Player():
  
@@ -13,9 +13,14 @@ class Player():
         self.race = self._setup_race(race)
         self.alignment = self._setup_alignment(alignment)
         
-        self.HP, self.STAM = self.setup_stats()
+        self.HP, self.ATT, self.DEF, \
+                 self.MAG, self.RES, self.INIT = self.setup_stats()
         self.MAX_HP = self.HP
-        self.MAX_STAM = self.STAM
+        self.MAX_ATT = self.ATT
+        self.MAX_DEF = self.DEF
+        self.MAX_MAG = self.MAG
+        self.MAX_RES = self.RES
+        self.MAX_INIT = self.INIT
 
     def _setup_alignment(self, align_id):
         if align_id == 'fighter':
@@ -45,12 +50,11 @@ class Player():
             HP: hitpoints
             STAM: stamina"""
 
-        BASE_HP = self.race.get_HP()
-        BASE_STAM = self.race.get_STAM()
+        base_stats = self.race.get_base_stats()
 
-        HP, STAM = self.alignment.adjust_stats(BASE_HP, BASE_STAM)
+        stats = self.alignment.adjust_stats(base_stats)
         
-        return HP, STAM
+        return stats
 
     def change_max_stat(self, stat_name, val):
         '''
@@ -66,15 +70,15 @@ class Player():
             val: value of the change
         Out:
             new value of the stat thats been changed"""
-        if stat_name == "HP":
-            self.HP += val
-            return self.HP
-        if stat_name == "STAM":
-            self.STAM += val
-            return self.STAM
         
+        setattr(self, stat_name, val)
+
+    def get_stats(self):
+        return self.HP, self.ATT, self.DEF, self.MAG, self.RES, self.INIT
+
+    def __repr__(self):
 
         """Displays the stats of a player
         returns a string that can be printed and holds the current stats of the player"""
-        return """{}:\n Race: {}, Alignment: {}
-    HP: {}, STAM: {}""".format(self.name, self.race, self.alignment, self.HP, self.STAM)
+        return """{}:\n Race: {}, Alignment: {}, \n HP: {},\n ATT: {},\n DEF: {},\n MAG: {},\n RES: {},\n INIT: {}\n """.format(\
+            self.name, self.race, self.alignment, self.HP, self.ATT, self.DEF, self.MAG, self.RES, self.INIT)
