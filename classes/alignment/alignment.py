@@ -1,3 +1,5 @@
+from classes.ability import fighter, mage
+
 class Alignment():
     '''
     Interface for creating an Alignment.
@@ -5,6 +7,7 @@ class Alignment():
     '''
     def __init__(self, verbose=False):
         self.verbose = verbose
+        self.skills = self._setup_skills()
 
     def adjust_stats(self, stats):
         '''
@@ -18,6 +21,12 @@ class Alignment():
         RES = self._adjust_RES(stats[4])
         INIT = self._adjust_INIT(stats[5])
         return HP, ATT, DEF, MAG, RES, INIT
+
+    def get_alignment_skills(self):
+        return self.skills
+
+    def _setup_skills(self):
+        raise NotImplementedError()
 
     def _adjust_HP(self, HP):
         ''' Adjust the HP for the given alignment '''
@@ -53,6 +62,9 @@ class Fighter(Alignment):
     def __init__(self):
         super().__init__(False)
 
+    def _setup_skills(self):
+        return [fighter.QuickStrike()]
+
     def _adjust_HP(self, HP):
         ''' Adjust the HP for the given alignment '''
         return HP + 1
@@ -86,6 +98,9 @@ class Mage(Alignment):
     ''' Mage Alignment class '''
     def __init__(self):
         super().__init__(False)
+
+    def _setup_skills(self):
+        return [mage.Fireball()]
 
     def _adjust_HP(self, HP):
         ''' Adjust the HP for the given alignment '''

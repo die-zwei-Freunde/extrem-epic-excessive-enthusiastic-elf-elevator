@@ -16,6 +16,8 @@ players = sp.setup_player()
 
 print(players)
 
+print([p.skills for p in players])
+
 #gl.Game_loop()
 
 #goblinsky = gb.BasicGoblin('Gertrud')

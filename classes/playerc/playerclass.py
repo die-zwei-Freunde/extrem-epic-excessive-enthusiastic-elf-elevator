@@ -22,6 +22,8 @@ class Player():
         self.MAX_RES = self.RES
         self.MAX_INIT = self.INIT
 
+        self.skills = self._setup_skills()
+
     def _setup_alignment(self, align_id):
         if align_id == 'fighter':
             return Fighter()
@@ -40,6 +42,12 @@ class Player():
 
         else:
             raise ValueError('The race_id {} was not understood.'.format(race_id))
+
+    def _setup_skills(self):
+        race_skills = self.race.get_race_skills()
+        align_skills = self.alignment.get_alignment_skills()
+
+        return race_skills + align_skills
 
     def setup_stats(self):
         """sets personal player stats at the start
