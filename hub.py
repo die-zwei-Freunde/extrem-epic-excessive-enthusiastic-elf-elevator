@@ -1,11 +1,16 @@
 from classes.playerc import playerclass as pc
 import start_setup as sp
 from classes.enemy import goblin as gb
+from classes.battle import manager as bl
+
+
 
 #import game_loop as gl
 
 
 players = sp.setup_player()
+goblinsky = gb.BasicGoblin('Gertrud')
+bm = bl.BattleManager(players, [goblinsky])
 #sp.setup_world()
 
 
@@ -16,12 +21,14 @@ players = sp.setup_player()
 
 print(players)
 
-print([p.skills for p in players])
+#print([p.skills for p in players])
 
 #gl.Game_loop()
+#print(bm.choose_skill(players[0]))
+#print([skill.cooldown_counter for skill in players[0].get_skills()])
 
-goblinsky = gb.BasicGoblin('Gertrud')
-print(goblinsky.skills)
+
+print(bm.run())
 
 
 #print('Enemy 1: ', '\n', goblinsky.stat_display())

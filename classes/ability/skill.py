@@ -7,6 +7,7 @@ class Skill():
         self.designation = designation
 
         self.damage = self._setup_damage()
+        self.buff, self.debuff = self._setup_effect()
         self.cooldown = self._setup_cooldown()
 
         self.cooldown_counter = 0
@@ -24,6 +25,11 @@ class Skill():
         '''
         raise NotImplementedError('YOU NEED A COOLDOWN MAAANNN')
 
+    def _setup_effect(self):
+        '''
+        Edit this method in your skill to give your skill an extra effect'''
+        return None, None
+
 
     def __repr__(self):
         return 'Skill: {}\n Damage: {}, Attribute: {}, Cooldown: {}\n'.format(\
@@ -38,15 +44,19 @@ class Skill():
         Cooldown counter is set up in the setup method.
         '''
         if self.cooldown_counter < 1:
-            self.cooldown_counter = self.cooldown
             return True
 
         else:
-            self.cooldown_counter -= 1
             return False
 
+    def reduce_cooldown(self):
+        self.cooldown_counter -= 1
+
+    def on_cooldown(self):
+        self.cooldown_counter = self.cooldown
+
     def get_damage(self):
-        return self.damage, self.designation
+        return self.damage, self.designation, self.buff, self.debuff
 
     def set_cooldown(self, value):
         self.cooldown = value

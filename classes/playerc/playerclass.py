@@ -24,6 +24,12 @@ class Player():
 
         self.skills = self._setup_skills()
 
+    def apply_cooldown(self, name):
+        for idx in range(len(self.skills)):
+            self.skills[idx].reduce_cooldown()
+            if self.skills[idx].name == name:
+                self.skills[idx].on_cooldown()
+
     def _setup_alignment(self, align_id):
         if align_id == 'fighter':
             return Fighter()
@@ -80,6 +86,9 @@ class Player():
             new value of the stat thats been changed"""
         
         setattr(self, stat_name, val)
+
+    def get_skills(self):
+        return self.skills
 
     def get_stats(self):
         return self.HP, self.ATT, self.DEF, self.MAG, self.RES, self.INIT

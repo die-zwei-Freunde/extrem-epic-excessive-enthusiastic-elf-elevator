@@ -36,13 +36,15 @@ class Enemy():
         to have one more max_HP
         '''
         raise NotImplementedError('You thought you could get away with this?!')
-    
+
+    def get_skills(self):
+        return self.skills
 
     def get_stats(self):
         return self.HP, self.ATT, self.DEF, self.MAG, self.RES, self.INIT
     
 
-    def set_stat(self, attr, val):
+    def change_stat(self, attr, val):
         setattr(self, attr, val)
 
 
