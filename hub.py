@@ -20,8 +20,8 @@ print([p.skills for p in players])
 
 #gl.Game_loop()
 
-#goblinsky = gb.BasicGoblin('Gertrud')
-#print(goblinsky)
+goblinsky = gb.BasicGoblin('Gertrud')
+print(goblinsky.skills)
 
 
 #print('Enemy 1: ', '\n', goblinsky.stat_display())

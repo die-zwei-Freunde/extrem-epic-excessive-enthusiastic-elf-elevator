@@ -21,6 +21,12 @@ class Enemy():
         self.MAX_MAG = self.MAG
         self.MAX_RES = self.RES
         self.MAX_INIT = self.INIT
+
+        self.skills = self._setup_skills()
+
+
+    def _setup_skills(self):
+        raise NotImplementedError()
         
 
     def _setup_stats(self):
