@@ -1,6 +1,6 @@
 """Playerclass"""
-from classes.race.race import *
-from classes.alignment.alignment import *
+from classes.race import *
+from classes.alignment import *
 
 class Player():
  
