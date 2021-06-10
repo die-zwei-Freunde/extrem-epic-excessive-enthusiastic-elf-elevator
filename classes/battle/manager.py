@@ -1,4 +1,5 @@
 import numpy as np
+from logger import printf
 
 class BattleManager():
     '''
@@ -12,17 +13,17 @@ class BattleManager():
     def run(self):
         counter = 1
 
-        print('Battle starts!')
+        printf('Battle starts!')
         while self.players and self.enemies:
-            print('- Round {}'.format(counter))
+            printf('- Round {}'.format(counter))
             self.battle(counter)
             counter += 1
 
         if self.players:
-            print('Congrats! You won!')
+            printf('Congrats! You won!')
             return True
         elif self.enemies:
-            print('You lost, man.')
+            printf('You lost, man.')
             return False
 
 
@@ -33,12 +34,12 @@ class BattleManager():
                 actors.append((player, self.players.index(player)))
         for enemy in self.enemies:
             if enemy.INIT % counter == 0 and enemy.INIT <= counter:
-                print(enemy.INIT >= counter)
+                printf(enemy.INIT >= counter)
                 actors.append((enemy, self.enemies.index(enemy)))
 
         for act in actors:
             actor, actor_index = act
-            print('It is {}s turn to attack!'.format(actor.name))
+            printf('It is {}s turn to attack!'.format(actor.name))
             target, t_id, t_index = self.choose_target(actor)
             skill = self.choose_skill(actor)
             dmg, buff, debuff = self.act(actor, skill, target)
@@ -51,11 +52,11 @@ class BattleManager():
 
     def apply(self, actor, act_id, target, target_id, dmg, buff, debuff):
         if buff:
-            print('Not yet implemented!')
+            printf('Not yet implemented!')
         if debuff:
-            print('Not yet implemented!')
+            printf('Not yet implemented!')
 
-        print('\n {} deals {} points of damage to {}.\n'.format(actor.name,
+        printf('\n {} deals {} points of damage to {}.\n'.format(actor.name,
                                                                 dmg,
                                                                 target.name))
 
@@ -91,11 +92,11 @@ class BattleManager():
         del_array = []
         for player in self.players:
             if player.HP <= 0:
-                print('Oh no! Player {} died!\n'.format(player.name))
+                printf('Oh no! Player {} died!\n'.format(player.name))
                 self.players.remove(player)
         for enemy in self.enemies:
             if enemy.HP <= 0:
-                print('Ha! Enemy {} died!\n'.format(enemy.name))
+                printf('Ha! Enemy {} died!\n'.format(enemy.name))
                 self.enemies.remove(enemy)
             
 
@@ -134,7 +135,7 @@ class BattleManager():
             if skill.is_available():
                 skill_dict[skill.name] = skill
         if not skill_dict:
-            print('All your skills are on cooldown. You cannot move, fam.\n')
+            printf('All your skills are on cooldown. You cannot move, fam.\n')
             return 0
 
         if act_id == 'player':
@@ -151,7 +152,7 @@ class BattleManager():
                     skill = skill_dict[name]
                     flag = False
                 except:
-                    print('That did not work, wrong name. Try again.')
+                    printf('That did not work, wrong name. Try again.')
 
             player.apply_cooldown(name)
 
@@ -175,7 +176,7 @@ class BattleManager():
                         break
                 flag = False
             except:
-                print('That did not work, wrong name. Try again.')
+                printf('That did not work, wrong name. Try again.')
 
         return target, target.name, target_list.index(target)
             

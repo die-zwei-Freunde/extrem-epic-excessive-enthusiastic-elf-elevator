@@ -2,6 +2,7 @@ from classes.playerc import playerclass as pc
 import start_setup as sp
 from classes.enemy import goblin as gb
 from classes.battle import manager as bl
+from logger import printf
 
 
 
@@ -19,7 +20,7 @@ bm = bl.BattleManager(players, [goblinsky])
 #jan = pc.Player('Jan', 'human', 'mage')
 #players = [piwo, jan]
 
-print(players)
+printf(players)
 
 #print([p.skills for p in players])
 
@@ -28,7 +29,7 @@ print(players)
 #print([skill.cooldown_counter for skill in players[0].get_skills()])
 
 
-print(bm.run())
+printf(bm.run())
 
 
 #print('Enemy 1: ', '\n', goblinsky.stat_display())

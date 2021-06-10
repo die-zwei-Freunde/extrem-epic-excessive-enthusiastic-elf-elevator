@@ -2,6 +2,7 @@
 
 from classes.playerc import playerclass as pc
 from testing import input_testing as inp
+from logger import printf
 
 def start_setup():
     """Plays intro and calls the player set up
@@ -17,7 +18,7 @@ def start_setup():
     
 
 def intro():
-    print("""Myths say this world was created by two almighty beings.
+    printf("""Myths say this world was created by two almighty beings.
 The people of this world call them LMNO and Piwo.
 They may guide you on your adventures through the lands of ______.""")
 
@@ -78,16 +79,16 @@ def setup_world():
     q2 = "Placeholder"
     questlist = [q1, q2]
     
-    print("You have to choose a quest.")
+    printf("You have to choose a quest.")
     for i, val in enumerate(questlist):
-        print(val, "[{}]".format(i+1))
+        printf(val, "[{}]".format(i+1))
     
     quest = input("Which of these quests you wanna play? [1,2] ")
     test = inp.test_int(quest, ['1', '2'])
     while test == False:
-        print("The quests are:")
+        printf("The quests are:")
         for i, val in enumerate(questlist):
-            print(val, "[{}]".format(i+1))
+            printf(val, "[{}]".format(i+1))
         quest = input("Which of these quests you wanna play? [1,2] ")
         test = inp.test_int(quest, ['1', '2'])
     quest = int(quest)
