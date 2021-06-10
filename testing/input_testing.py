@@ -1,4 +1,5 @@
 """testing inputs so you dont throw shit in the programm"""
+from logger import printf
 
 def test_string(string, expection):
     """tests user inputs, maybe not needed in final version
@@ -9,23 +10,23 @@ def test_string(string, expection):
     if expection == 'name':
         lenght = len(string)
         if lenght == 0:
-            print("You made no input.")
+            printf("You made no input.")
             return False
         if lenght <= 15:
             return True
         if lenght > 15:
-            print("Your input is to long. Max letters are 15")
+            printf("Your input is to long. Max letters are 15")
             return False
         
     if string in expection:
             return True
     else:
-        print("Your input wasnt correct.")
+        printf("Your input wasnt correct.")
         return False
         
 def test_int(string, expection):
     if string in expection:
         return True
     else:
-        print("Your input wasnt valid.")
+        printf("Your input wasnt valid.")
         return False
