@@ -1,5 +1,6 @@
 from classes.alignment.alignment import Alignment
-from classes.alignment import mage_skills
+from classes.ability.alignment import mage
+
 
 class Mage(Alignment):
     ''' Mage Alignment class '''
@@ -7,7 +8,7 @@ class Mage(Alignment):
         super().__init__(False)
 
     def _setup_skills(self):
-        return [mage_skills.Fireball()]
+        return [mage.Fireball()]
 
     def _adjust_HP(self, HP):
         ''' Adjust the HP for the given alignment '''

@@ -1,5 +1,6 @@
 from classes.enemy import enemy
-from classes.enemy import goblin_skills
+from classes.ability.enemy import goblin
+
 
 class BasicGoblin(enemy.Enemy):
     '''
@@ -12,7 +13,7 @@ class BasicGoblin(enemy.Enemy):
         super().__init__(name)
 
     def _setup_skills(self):
-        return [goblin_skills.Tackle()]
+        return [goblin.Tackle()]
 
     def _setup_stats(self):
         HP = 1
@@ -34,7 +35,7 @@ class TankGoblin(enemy.Enemy):
         super().__init__(name, MAX_HP, MAX_STAM)
 
     def _setup_skills(self):
-        return [goblin_skills.Tackle()]
+        return [goblin.Tackle()]
 
     def _setup_stats(self):
         HP = 5

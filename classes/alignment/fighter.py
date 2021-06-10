@@ -1,5 +1,6 @@
 from classes.alignment.alignment import Alignment
-from classes.alignment import fighter_skills
+from classes.ability.alignment import fighter
+
 
 class Fighter(Alignment):
     ''' Fighter Alignment class '''
@@ -7,7 +8,7 @@ class Fighter(Alignment):
         super().__init__(False)
 
     def _setup_skills(self):
-        return [fighter_skills.QuickStrike()]
+        return [fighter.QuickStrike()]
 
     def _adjust_HP(self, HP):
         ''' Adjust the HP for the given alignment '''

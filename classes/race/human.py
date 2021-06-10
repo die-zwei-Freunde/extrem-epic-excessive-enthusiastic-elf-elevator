@@ -1,5 +1,6 @@
 from classes.race import race
-from classes.race import human_skills
+from classes.ability.race import human
+
 
 class Human(race.Race):
 
@@ -17,7 +18,7 @@ class Human(race.Race):
         return HP, ATT, DEF, MAG, RES, INIT
 
     def _setup_skills(self):
-        return [human_skills.StrikeOfHonor()]
+        return [human.StrikeOfHonor()]
 
     def __repr__(self):
          return 'Human'

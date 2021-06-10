@@ -1,5 +1,6 @@
 from classes.race import race
-from classes.race import orc_skills
+from classes.ability.race import orc
+
 
 class Orc(race.Race):
 
@@ -17,7 +18,7 @@ class Orc(race.Race):
         return HP, ATT, DEF, MAG, RES, INIT
 
     def _setup_skills(self):
-        return [orc_skills.BigSlash()]
+        return [orc.BigSlash()]
   
     def __repr__(self):
          return 'Orc'
