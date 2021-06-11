@@ -2,8 +2,8 @@
 from classes.race import *
 from classes.alignment import *
 
-class Player():
- 
+
+class Player:
     def __init__(self, name, race, alignment):
         """Sorts the arguments to variables
         Arg: 
@@ -23,6 +23,71 @@ class Player():
         self.MAX_INIT = self.INIT
 
         self.skills = self._setup_skills()
+
+        self.items = {}
+
+    def equip_item(self, item):
+        self.increase_stat('HP', item.dHP)
+        self.increase_stat('MAX_HP', item.dHP)
+
+        self.increase_stat('ATT', item.dATT)
+        self.increase_stat('MAX_ATT', item.dATT)
+
+        self.increase_stat('DEF', item.dDEF)
+        self.increase_stat('MAX_DEF', item.dDEF)
+
+        self.increase_stat('MAG', item.dMAG)
+        self.increase_stat('MAX_MAG', item.dMAG)
+
+        self.increase_stat('RES', item.dRES)
+        self.increase_stat('MAX_RES', item.dRES)
+
+        self.increase_stat('INIT', item.dINIT)
+        self.increase_stat('MAX_INIT', item.dINIT)
+
+        if self.INIT <= 0:
+            self.INIT = 1
+            self.MAX_INIT = 1
+
+        self.items[item.id] = item
+
+    def strip_item(self, item_id):
+        if not item_id in self.items:
+            raise KeyError('Item not equipped.')
+
+        item = self.items[item_id]
+
+        self.decrease_stat('HP', item.dHP)
+        self.decrease_stat('MAX_HP', item.dHP)
+
+        self.decrease_stat('ATT', item.dATT)
+        self.decrease_stat('MAX_ATT', item.dATT)
+
+        self.decrease_stat('DEF', item.dDEF)
+        self.decrease_stat('MAX_DEF', item.dDEF)
+
+        self.decrease_stat('MAG', item.dMAG)
+        self.decrease_stat('MAX_MAG', item.dMAG)
+
+        self.decrease_stat('RES', item.dRES)
+        self.decrease_stat('MAX_RES', item.dRES)
+
+        self.decrease_stat('INIT', item.dINIT)
+        self.decrease_stat('MAX_INIT', item.dINIT)
+
+        if self.INIT <= 0:
+            self.INIT = 1
+            self.MAX_INIT = 1
+
+        del self.items[item.id]
+
+    def use_item(self, item):
+        effect = item.use()
+        for key, val in effect.items():
+            self.increase_stat(key, val)
+
+            if self.HP > self.MAX_HP:
+                self.HP = self.MAX_HP
 
     def apply_cooldown(self, name):
         for idx in range(len(self.skills)):
@@ -92,6 +157,12 @@ class Player():
 
     def get_stats(self):
         return self.HP, self.ATT, self.DEF, self.MAG, self.RES, self.INIT
+
+    def increase_stat(self, stat_name, incr):
+        setattr(self, stat_name, getattr(self, stat_name) + incr)
+
+    def decrease_stat(self, stat_name, incr):
+        setattr(self, stat_name, getattr(self, stat_name) - incr)
 
     def __repr__(self):
 

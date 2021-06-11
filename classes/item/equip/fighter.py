@@ -5,7 +5,7 @@ class BloodyGlovesOfDemiGodJan(equippable.Equippable):
     """Gloves covered in what appears to be the blood of the demi-god Jan. Especially interesting, as it is said
     that Jan is not able to bleed."""
     def __init__(self):
-        name = "Runic Staff of Horror"
+        name = "Bloody Gloves of a Demi-God"
         race = ['all']
         alignment = ['Fighter']
 
