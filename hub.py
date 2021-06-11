@@ -1,11 +1,35 @@
-from Classes.Playerc import playerclass as pc
+from classes.playerc import playerclass as pc
+import start_setup as sp
+from classes.enemy import goblin as gb
+from classes.battle import manager as bl
+from logger import printf
 
-player_1 = pc.player('human', 'mage')
-player_2 = pc.player('orc', 'fighter')
 
-player_1.change_stat("HP", 1)
 
-print(player_1.HP)
+#import game_loop as gl
 
-print("Player 1:","\n", player_1.stat_display())
-print("Player 2:","\n", player_2.stat_display())
+
+players = sp.setup_player()
+goblinsky = gb.BasicGoblin('Gertrud')
+bm = bl.BattleManager(players, [goblinsky])
+#sp.setup_world()
+
+
+#players, world = sp.start_setup()
+#piwo = pc.Player('Piwo', 'orc', 'fighter')
+#jan = pc.Player('Jan', 'human', 'mage')
+#players = [piwo, jan]
+
+printf(players)
+
+#print([p.skills for p in players])
+
+#gl.Game_loop()
+#print(bm.choose_skill(players[0]))
+#print([skill.cooldown_counter for skill in players[0].get_skills()])
+
+
+printf(bm.run())
+
+
+#print('Enemy 1: ', '\n', goblinsky.stat_display())
