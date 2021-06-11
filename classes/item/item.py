@@ -1,4 +1,4 @@
-class Item():
+class Item:
     '''Abstract Base class for any items; equippable and useable.'''
     def __init__(self, id, race, alignment, ):
         self.id = id
