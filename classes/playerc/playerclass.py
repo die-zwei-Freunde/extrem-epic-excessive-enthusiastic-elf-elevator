@@ -31,9 +31,9 @@ class Player():
                 self.skills[idx].on_cooldown()
 
     def _setup_alignment(self, align_id):
-        if align_id == 'fighter':
+        if align_id == 'Fighter':
             return Fighter()
-        if align_id == 'mage':
+        if align_id == 'Mage':
             return Mage()
 
         else:
@@ -41,9 +41,9 @@ class Player():
 
 
     def _setup_race(self, race_id):
-        if race_id == 'orc':
+        if race_id == 'Orc':
             return Orc()
-        if race_id == 'human':
+        if race_id == 'Human':
             return Human()
 
         else:

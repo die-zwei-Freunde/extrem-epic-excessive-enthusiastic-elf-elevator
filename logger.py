@@ -1,2 +1,2 @@
-def printf(string):
-    print(string)
+def printf(*string):
+    print(*string)
