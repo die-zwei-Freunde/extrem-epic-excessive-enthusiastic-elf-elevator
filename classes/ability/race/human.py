@@ -1,5 +1,6 @@
 from classes.ability import skill
 
+
 class StrikeOfHonor(skill.Skill):
     '''
     Human skill.
