@@ -164,7 +164,7 @@ def main():
 
     i = InventoryManager(ps)
     i.add_item('Small health potion')
-    i.add_item('Runic Staff of Horror')
+    i.add_item('Bloody Gloves of a Demi-God')
     ps = i.manage(ps)
     print(ps)
 
