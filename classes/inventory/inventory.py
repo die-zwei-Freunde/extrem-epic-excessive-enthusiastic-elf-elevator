@@ -39,7 +39,7 @@ class Inventory:
             else:
                 self.assignments[player.name][item.type] = item
 
-        if not self.check_if_equippable(player_dict, item_id) and not item.equipped:
+        elif not self.check_if_equippable(player_dict, item_id) and not item.equipped:
             choice = input(f'You are already full; want to swap items? (y/n)\n')
             if choice == 'y' or choice == 'yes':
                 if item.type == 'both_hands':
@@ -57,6 +57,7 @@ class Inventory:
                     self.assignments[player.name]['right_hand'] = item
                 else:
                     self.assignments[player.name][item.type] = item
+                player.equip_item(self.equippables[item_id])
 
             else:
                 print('Cannot equip this item!')
@@ -106,7 +107,7 @@ class Inventory:
             if not dictionary['left_hand'] and not dictionary['right_hand']:
                 return True
         else:
-            return ~bool(dictionary[item.type])
+            return not bool(dictionary[item.type])
 
     def _setup_assign(self, players):
         ass = {}
