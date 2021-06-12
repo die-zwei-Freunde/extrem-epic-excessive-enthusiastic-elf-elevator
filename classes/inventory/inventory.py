@@ -57,6 +57,7 @@ class Inventory:
                     self.assignments[player.name]['right_hand'] = item
                 else:
                     self.assignments[player.name][item.type] = item
+                player.equip_item(self.equippables[item_id])
 
             else:
                 print('Cannot equip this item!')

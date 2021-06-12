@@ -84,8 +84,9 @@ class InventoryManager:
         return players
 
     def _show_stats(self, player):
+        import copy
         printf(player)
-        a = self.inventory.get_assignments()[player.name]
+        a = copy.deepcopy(self.inventory.get_assignments()[player.name])
         for key, value in a.items():
             if value:
                 a[key] = a[key].id
@@ -179,7 +180,6 @@ def main():
     from classes.playerc import playerclass
 
     p = playerclass.Player('ME', 'Human', 'Fighter')
-    print(p)
     p.increase_stat('HP', -2)
     ps = {p.name: p}
 
