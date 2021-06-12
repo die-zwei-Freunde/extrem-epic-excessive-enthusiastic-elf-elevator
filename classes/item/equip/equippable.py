@@ -5,7 +5,10 @@ class Equippable(item.Item):
     """Item that can be equipped and thus has extended interfaces."""
     def __init__(self, name, race, alignment):
         super().__init__(name, race, alignment)
+        self.designation = 'equippable'
+        self.equipped = False
 
+        self.type = self._setup_type()
         self.dHP, self.dATT, self.dDEF, self.dMAG, self.dRES, self.dINIT = self._setup_stat_increase()
         self.restrictions = self._setup_restrictions()
 
@@ -26,6 +29,11 @@ class Equippable(item.Item):
 
     def get_dINIT(self):
         return self.dINIT
+
+    def _setup_type(self):
+        """Setup the type of equippable item (left_hand, right_hand, both_hands,
+         head, body, boots, ring, earring, other)"""
+        raise NotImplementedError('Specify the type of equippable item; see documentation on the right naming scheme.')
 
     def _setup_stat_increase(self):
         """Setup the stat increase/decrease that the item implies."""

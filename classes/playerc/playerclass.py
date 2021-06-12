@@ -49,6 +49,9 @@ class Player:
             self.INIT = 1
             self.MAX_INIT = 1
 
+        if self.HP <= 0:
+            self.HP = 0
+
         self.items[item.id] = item
 
     def strip_item(self, item_id):

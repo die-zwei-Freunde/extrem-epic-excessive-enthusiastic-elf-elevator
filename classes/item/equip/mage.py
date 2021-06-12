@@ -10,6 +10,9 @@ class RunicStaff(equippable.Equippable):
 
         super().__init__(name, race, alignment)
 
+    def _setup_type(self):
+        return 'left_hand'
+
     def _setup_stat_increase(self):
         """Return the stat changes; if the stat changes, return 0 for that stat."""
         HP = 0

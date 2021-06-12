@@ -5,6 +5,7 @@ class Useable(item.Item):
     """Base class for creating an useable object."""
     def __init__(self, name, race, alignment):
         super().__init__(name, race, alignment)
+        self.designation = 'useable'
         self.effect = self.use()
 
     def use(self):
