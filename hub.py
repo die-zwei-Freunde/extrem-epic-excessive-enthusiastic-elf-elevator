@@ -3,22 +3,28 @@ import start_setup as sp
 from classes.enemy import goblin as gb
 from classes.battle import manager as bl
 from logger import printf
+import classes.world.worldclass as w
 
-import classes.race as cr
-printf(cr.__all__)
+# import json
+#
+# story = {'prestring': 'This happens before action.',
+#          'action': {'type': 'battle', 'loot': [], 'enemy': []},
+#          'poststring': 'This happens after action, decide!',
+#          'decision': {},
+#          'Endpoint': True}
+#
+# with open('classes/world/story/world05.json', 'w') as fp:
+#     json.dump(story, fp, indent=4)
 
-
-
-#import game_loop as gl
+import classes.gameloop.game_loop as gl
+g = gl.Game_loop()
+g.run()
 
 
 #players = sp.setup_player()
 #goblinsky = gb.BasicGoblin('Gertrud')
 #bm = bl.BattleManager(players, [goblinsky])
-#sp.setup_world()
 
-
-#players, world = sp.start_setup()
 #piwo = pc.Player('Piwo', 'orc', 'fighter')
 #jan = pc.Player('Jan', 'human', 'mage')
 #players = [piwo, jan]

@@ -3,7 +3,7 @@
 import json
 
 
-class World():
+class World:
     def __init__(self):
         with open('classes/world/config.json', 'r') as fp:
             self.config = json.load(fp)

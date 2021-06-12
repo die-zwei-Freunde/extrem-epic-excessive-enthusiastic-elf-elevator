@@ -39,3 +39,10 @@ def test_alignment(inp):
         else:
             inp = input(f"Your input wasn't correct, please try again. {ca.__all__}: ")
     return inp.capitalize()
+
+
+def test_decision(inp, keys):
+    inp.casefold()
+    while inp not in keys:
+        inp = input(f"Your input wasn't one of the options, please try again: {keys} ")
+    return inp

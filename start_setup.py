@@ -15,9 +15,7 @@ def start_setup():
 
     players = setup_player()
 
-    world = setup_world()
-
-    return players, world
+    return players
 
 
 def intro():
@@ -31,7 +29,7 @@ def setup_player():
     player_quantity = input("How many players are you? ")
     player_quantity = inp.test_quantaty(player_quantity)
 
-    players = []
+    players = {}
     for i in range(1, player_quantity + 1):
         name = input(f"Player {i} whats your name? ")
         name = name.capitalize()
@@ -49,12 +47,6 @@ def setup_player():
         alignment = inp.test_alignment(alignment)
 
         p = pc.Player(name, race, alignment)
-        players.append(p)
+        players[name] = p
         
     return players
-
-
-def setup_world():
-    world = 'world'
-    return world
-    
