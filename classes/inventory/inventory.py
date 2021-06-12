@@ -6,6 +6,22 @@ class Inventory:
 
         self.assignments = self._setup_assign(players)
 
+    def use_item_on_player(self, player, item_id):
+        if not self.useables:
+            print('There are no useable items.')
+            return player
+
+        item = self.useables[item_id]
+        player.use_item(item)
+
+        return player
+
+    def get_specific_item(self, item_id):
+        if item_id in self.equippables:
+            return self.equippables[item_id]
+        else:
+            return None
+
     def equip_item_to_player(self, player, item_id):
         player_dict = self.assignments[player.name]
         item = self.equippables[item_id]
