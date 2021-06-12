@@ -23,38 +23,50 @@ class InventoryManager:
                 printf(self.inventory)
                 self.observe_items()
             elif mode == 1:
+                if not self.inventory.equippables:
+                    printf('There are no equippable items.')
+                    continue
                 player = self.get_player(players)
                 if not player:
-                    pass
+                    continue
                 player, player_id = player
                 item = self.get_item()
                 if not item:
-                    pass
+                    continue
                 player = self.inventory.equip_item_to_player(player, item)
                 players[player.name] = player
+                printf('Successfull!')
 
             elif mode == 2:
+                if not self.inventory.equippables:
+                    printf('There are no equippable items.')
+                    continue
                 player = self.get_player(players)
                 if not player:
-                    pass
+                    continue
                 player, player_id = player
                 item = self.get_item()
                 if not item:
-                    pass
+                    continue
                 player = self.inventory.remove_item_from_player(item, player)
                 players[player.name] = player
+                printf('Successfull!')
 
             elif mode == 3:
+                if not self.inventory.useables:
+                    printf('There are no useable items.')
+                    continue
                 player = self.get_player(players)
                 if not player:
-                    pass
+                    continue
                 player, player_id = player
-                item = self.get_item()
+                item = self.get_item('u')
                 if not item:
-                    pass
+                    continue
 
                 player = self.inventory.use_item_on_player(player, item)
                 players[player.name] = player
+                printf('Successfull!')
 
             elif mode == 4:
                 editting = False
@@ -64,25 +76,44 @@ class InventoryManager:
     def observe_items(self):
         while True:
             dec = input('Do you want to inspect a specific item? (y/n)\n')
-            if dec != 'y' or dec != 'yes':
+            if dec == 'n' or dec == 'no':
                 return 0
 
-            item = self.get_item()
+            item = self.get_item('all')
             if not item:
                 return 0
-            printf(item)
+            if item in self.inventory.useables:
+                printf(self.inventory.useables[item])
+            elif item in self.inventory.equippables:
+                printf(self.inventory.equippables[item])
 
 
-    def get_item(self):
+    def get_item(self, key='e'):
         while True:
             item_id = input('Specify the item: \n')
             if item_id == 'exit':
                 return False
-            if item_id in self.inventory.equippables:
-                return item_id
-            else:
-                item_list = [name for name in self.inventory.equippables.keys()]
-                printf(f'Your decision was not understood. Use one of {item_list}.')
+            if key == 'e':
+                if item_id in self.inventory.equippables:
+                    return item_id
+                else:
+                    item_list = [name for name in self.inventory.equippables.keys()]
+                    printf(f'Your decision was not understood. Use one of {item_list}.')
+            elif key == 'u':
+                if item_id in self.inventory.useables:
+                    return item_id
+                else:
+                    item_list = [name for name in self.inventory.useables.keys()]
+                    printf(f'Your decision was not understood. Use one of {item_list}.')
+
+            elif key == 'all':
+                if item_id in self.inventory.useables or item_id in self.inventory.equippables:
+                    return item_id
+                else:
+                    item_list = [name for name in self.inventory.useables.keys()]
+                    item_list += [name for name in self.inventory.equippables.keys()]
+                    printf(f'Your decision was not understood. Use one of {item_list}.')
+
 
     def get_player(self, players):
         while True:
@@ -108,3 +139,19 @@ class InventoryManager:
                 printf('Your decision was not understood. Use the numbers associated.')
 
         return mode
+
+def main():
+    from classes.playerc import playerclass
+
+    p = playerclass.Player('ME', 'Human', 'Mage')
+    p.increase_stat('HP', -4)
+    ps = {p.name: p}
+
+    i = InventoryManager(ps)
+    i.add_item('Small health potion')
+    i.add_item('Runic Staff of Horror')
+    ps = i.manage(ps)
+    print(ps)
+
+if __name__ == '__main__':
+    main()

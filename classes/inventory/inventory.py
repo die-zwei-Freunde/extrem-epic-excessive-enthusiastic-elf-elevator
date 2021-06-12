@@ -25,12 +25,12 @@ class Inventory:
     def equip_item_to_player(self, player, item_id):
         player_dict = self.assignments[player.name]
         item = self.equippables[item_id]
-        if self.check_if_equippable(player_dict, item_id) and not item.equipped:
+        if not self.check_if_equippable(player_dict, item_id) and not item.equipped:
             player.equip_item(self.equippables[item_id])
             self.equippables[item_id].equipped = True
             self.assignments[player.name][item_id] = item
 
-        if not self.check_if_equippable(player_dict, item_id) and not item.equipped:
+        if self.check_if_equippable(player_dict, item_id) and not item.equipped:
             choice = input(f'You already have a {item.type} ({item.id}) equipped; want to swap items? (y/n)\n')
             if choice == 'y' or choice == 'yes':
                 old_item = player_dict[item.type]
@@ -62,9 +62,9 @@ class Inventory:
 
     def add_item(self, item):
         if item.designation == 'equippable':
-            self.equippables[item.name] = item
+            self.equippables[item.id] = item
         elif item.designation == 'useable':
-            self.useables.append(item)
+            self.useables[item.id] = item
 
         else:
             raise NotImplementedError(f'Item designation {item.designation} not understood.')
@@ -102,7 +102,7 @@ class Inventory:
             player_dict['earring'] = None
             player_dict['other'] = None
 
-            ass[player.name] = player_dict
+            ass[player] = player_dict
 
         return ass
 
@@ -111,7 +111,7 @@ class Inventory:
 
     def __repr__(self):
         intro = "Inventory: \n"
-        eq = f"Equippable items:\n{[item for item in self.equippables.values()]}.\n"
-        us = f"Useable items:\n{[item for item in self.useables.values()]}.\n"
+        eq = f"Equippable items:\n{[item.id for item in self.equippables.values()]}.\n"
+        us = f"Useable items:\n{[item.id for item in self.useables.values()]}.\n"
 
         return intro + eq + us
