@@ -28,6 +28,7 @@ class Inventory:
         if player.get_alignment_id().capitalize() not in item.align:
             print('You cannot equip this item, your alignment is not right.')
             return player
+
         if self.check_if_equippable(player_dict, item_id) and not item.equipped:
             player.equip_item(self.equippables[item_id])
             self.equippables[item_id].equipped = True
@@ -39,11 +40,16 @@ class Inventory:
                 self.assignments[player.name][item.type] = item
 
         if not self.check_if_equippable(player_dict, item_id) and not item.equipped:
-            choice = input(f'You already have a {item.type} ({item.id}) equipped; want to swap items? (y/n)\n')
+            choice = input(f'You are already full; want to swap items? (y/n)\n')
             if choice == 'y' or choice == 'yes':
-                old_item = player_dict[item.type]
-                player.strip_item(old_item.id)
-                self.equippables[old_item.id].equipped = False
+                if item.type == 'both_hands':
+                    old_item_type = ('left_hand', 'right_hand')
+                else:
+                    old_item_type = [item.type]
+                for typ in old_item_type:
+                    old_item = player_dict[typ]
+                    if old_item:
+                        self.remove_item_from_player(old_item.id, player)
 
                 self.equippables[item_id].equipped = True
                 if item.type == 'both_hands':
@@ -63,7 +69,11 @@ class Inventory:
 
         if item.equipped:
             player.strip_item(item_id)
-            self.assignments[player.name][item_id] = None
+            if item.type == 'both_hands':
+                self.assignments[player.name]['left_hand'] = None
+                self.assignments[player.name]['right_hand'] = None
+            else:
+                self.assignments[player.name][item.type] = None
             self.equippables[item_id].equipped = False
 
         else:
@@ -95,10 +105,8 @@ class Inventory:
         if item.type == 'both_hands':
             if not dictionary['left_hand'] and not dictionary['right_hand']:
                 return True
-            else:
-                return False
         else:
-            return bool(dictionary[item.type])
+            return ~bool(dictionary[item.type])
 
     def _setup_assign(self, players):
         ass = {}
