@@ -27,7 +27,8 @@ def test_races(inp):
             condition = False
         else:
             inp = input(f"Your input wasn't correct, please try again. {cr.__all__}: ")
-    return inp.capitalize()
+            inp = inp.capitalize()
+    return inp
 
 
 def test_alignment(inp):
@@ -38,7 +39,8 @@ def test_alignment(inp):
             condition = False
         else:
             inp = input(f"Your input wasn't correct, please try again. {ca.__all__}: ")
-    return inp.capitalize()
+            inp = inp.capitalize()
+    return inp
 
 
 def test_decision(inp, keys):
