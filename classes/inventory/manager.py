@@ -72,9 +72,30 @@ class InventoryManager:
                 printf(player)
 
             elif mode == 4:
+                player = self.get_player(players)
+                if not player:
+                    continue
+                player, player_id = player
+                self._show_stats(player)
+
+            elif mode == 5:
                 editting = False
 
         return players
+
+    def _show_stats(self, player):
+        printf(player)
+        a = self.inventory.get_assignments()[player.name]
+        for key, value in a.items():
+            if value:
+                a[key] = a[key].id
+
+        string = f"Assignments: \nLeft hand: {a['left_hand']},\nRight hand: {a['right_hand']},\n" \
+                 f"Head: {a['head']},\nBody: {a['body']},\nBoots: {a['boots']},\nRing: {a['ring']},\n" \
+                 f"Earring: {a['earring']},\nOther: {a['other']}."
+
+        printf(string)
+
 
     def observe_items(self):
         while True:
@@ -134,7 +155,7 @@ class InventoryManager:
 
     def make_decision(self):
         while True:
-            dec = input('What do you want to do?\nView [0] --- Equip [1] --- Strip [2] --- Use [3] --- Exit [4]\n')
+            dec = input('What do you want to do?\nView [0] --- Equip [1] --- Strip [2] --- Use [3] --- Check [4] --- Exit [5]\n')
             try:
                 mode = int(dec)
                 break

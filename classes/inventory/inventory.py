@@ -28,6 +28,7 @@ class Inventory:
         if player.get_alignment_id().capitalize() not in item.align:
             print('You cannot equip this item, your alignment is not right.')
             return player
+
         if self.check_if_equippable(player_dict, item_id) and not item.equipped:
             player.equip_item(self.equippables[item_id])
             self.equippables[item_id].equipped = True
@@ -104,10 +105,8 @@ class Inventory:
         if item.type == 'both_hands':
             if not dictionary['left_hand'] and not dictionary['right_hand']:
                 return True
-            else:
-                return False
         else:
-            return bool(dictionary[item.type])
+            return ~bool(dictionary[item.type])
 
     def _setup_assign(self, players):
         ass = {}
