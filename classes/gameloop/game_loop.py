@@ -5,7 +5,7 @@ import classes.world.worldclass as wld
 from logger import printf
 import testing.input_testing as test
 import classes.inventory.manager as inv
-
+import classes.action.manager as act
 
 class Game_loop:
     def __init__(self):
@@ -19,7 +19,15 @@ class Game_loop:
         while not endpoint:
             story = wld.World().next(self.flag)
             printf(story['prestring'])
-            action = story['action']
+            action = act.ActionManager(story['action'])
+            self.players, loot, alive = action.start(self.players)
+            for l in loot:
+                self.inventory.add_item(l)
+            if not alive:
+                printf('you dead, no game anymore')
+                endpoint = True
+                continue
+
             decision = story['decision']
             keys = [key for key in decision.keys()]
             printf(story['poststring'])
