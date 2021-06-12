@@ -1,0 +1,14 @@
+{
+    "prestring": "The magic lets the grass grow and it sets free a big amount of pollen.\nThe great god Jan doesn't like that at all. Make yourself ready to die!",
+    "action": {
+        "type": "battle",
+        "loot": [],
+        "enemy": [
+            "GodPiwo",
+            "GodJan"
+        ]
+    },
+    "poststring": "You wont get here!",
+    "decision": {},
+    "Endpoint": true
+}

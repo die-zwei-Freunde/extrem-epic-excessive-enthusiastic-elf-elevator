@@ -1,0 +1,13 @@
+{
+    "prestring": "You're group finds itself at the gates of a big city.",
+    "action": {
+        "type": "null"
+    },
+    "poststring": "From the forest outside of the city comes a scream.",
+    "decision": {
+        "a": "Follow the scream out of the city.",
+        "b": "Stand still in the gate.",
+        "c": "Wander inside of the city for some sightseeing."
+    },
+    "Endpoint": false
+}

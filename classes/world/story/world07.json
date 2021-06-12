@@ -1,0 +1,14 @@
+{
+    "prestring": "How could you be so stupid and kick a bookshelf, when the great god Jan could always watch you.\nHe attacks you with all he has. Make yourself ready to die!",
+    "action": {
+        "type": "battle",
+        "loot": [],
+        "enemy": [
+            "GodPiwo",
+            "GodJan"
+        ]
+    },
+    "poststring": "You wont get here!",
+    "decision": {},
+    "Endpoint": true
+}

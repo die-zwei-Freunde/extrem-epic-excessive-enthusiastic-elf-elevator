@@ -1,0 +1,11 @@
+{
+    "prestring": "You wander a few meters into the city and stumble over a bookshop.",
+    "action": {
+        "type": "null"
+    },
+    "poststring": "All of your parents were killed by books, so anger rises in you.",
+    "decision": {
+        "a": "Kick one of the bookshelf's!"
+    },
+    "Endpoint": false
+}

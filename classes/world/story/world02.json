@@ -1,0 +1,18 @@
+{
+    "prestring": "You run into the forest and there encounter a goblin killing some people.\nBecause you are stupid you try to help and attack the goblin.",
+    "action": {
+        "type": "battle",
+        "loot": [
+            "Runic Staff of Horror",
+            "Bloody Gloves of a Demi-God"
+        ],
+        "enemy": [
+            "Basic Goblin"
+        ]
+    },
+    "poststring": "After your first battle, you think pretty highly of yourself.",
+    "decision": {
+        "a": "Joke about the height difference between you and the goblin, to bragg about your victory."
+    },
+    "Endpoint": false
+}

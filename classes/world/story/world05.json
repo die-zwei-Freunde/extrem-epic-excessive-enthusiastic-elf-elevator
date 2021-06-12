@@ -1,0 +1,14 @@
+{
+    "prestring": "Your foolish comment about the goblins height was overheard by one of the gods.\nAnd Piwo doesn't like people bragging about their height. Make yourself ready to die!",
+    "action": {
+        "type": "battle",
+        "loot": [],
+        "enemy": [
+            "GodPiwo",
+            "GodJan"
+        ]
+    },
+    "poststring": "You wont get here!",
+    "decision": {},
+    "Endpoint": true
+}

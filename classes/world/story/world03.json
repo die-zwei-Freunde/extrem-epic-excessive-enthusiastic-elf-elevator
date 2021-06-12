@@ -1,0 +1,15 @@
+{
+    "prestring": "After waiting for a few minutes a stranger comes over and hands your group some items.",
+    "action": {
+        "type": "loot",
+        "loot": [
+            "Runic Staff of Horror",
+            "Bloody Gloves of a Demi-God"
+        ]
+    },
+    "poststring": "One of the items was a magic scroll you could use to let the grass grow.",
+    "decision": {
+        "a": "Use the scroll"
+    },
+    "Endpoint": false
+}
