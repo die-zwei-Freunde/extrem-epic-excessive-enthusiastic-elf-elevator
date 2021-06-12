@@ -36,6 +36,7 @@ class InventoryManager:
                 player = self.inventory.equip_item_to_player(player, item)
                 players[player.name] = player
                 printf('Successfull!')
+                printf(player)
 
             elif mode == 2:
                 if not self.inventory.equippables:
@@ -51,6 +52,7 @@ class InventoryManager:
                 player = self.inventory.remove_item_from_player(item, player)
                 players[player.name] = player
                 printf('Successfull!')
+                printf(player)
 
             elif mode == 3:
                 if not self.inventory.useables:
@@ -67,6 +69,7 @@ class InventoryManager:
                 player = self.inventory.use_item_on_player(player, item)
                 players[player.name] = player
                 printf('Successfull!')
+                printf(player)
 
             elif mode == 4:
                 editting = False
@@ -144,7 +147,8 @@ def main():
     from classes.playerc import playerclass
 
     p = playerclass.Player('ME', 'Human', 'Mage')
-    p.increase_stat('HP', -4)
+    print(p)
+    p.increase_stat('HP', -2)
     ps = {p.name: p}
 
     i = InventoryManager(ps)
