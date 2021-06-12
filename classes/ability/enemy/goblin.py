@@ -1,5 +1,6 @@
 from classes.ability import skill
 
+
 class Tackle(skill.Skill):
     ''' Simplest Enemy attack'''
     def __init__(self, name='Blind Tackle', designation='ATT'):

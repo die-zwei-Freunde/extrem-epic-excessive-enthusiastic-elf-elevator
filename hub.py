@@ -4,16 +4,17 @@ from classes.enemy import goblin as gb
 from classes.battle import manager as bl
 from logger import printf
 import classes.world.worldclass as w
+import json
 
-# import json
-#
-# story = {'prestring': 'This happens before action.',
-#          'action': {'type': 'battle', 'loot': [], 'enemy': []},
-#          'poststring': 'This happens after action, decide!',
+
+# story = {'prestring': """How could you be so stupid and a bookshelf, when the great god Jan could always watch you.
+# He attacks you with all he has. Make yourself ready to die!""",
+#          'action': {'type': 'battle', 'loot': [], 'enemy': ['Piwo', 'Jan']},
+#          'poststring': """You wont get here!""",
 #          'decision': {},
 #          'Endpoint': True}
 #
-# with open('classes/world/story/world05.json', 'w') as fp:
+# with open('classes/world/story/world07.json', 'w') as fp:
 #     json.dump(story, fp, indent=4)
 
 import classes.gameloop.game_loop as gl
