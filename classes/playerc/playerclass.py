@@ -161,6 +161,9 @@ class Player:
     def get_stats(self):
         return self.HP, self.ATT, self.DEF, self.MAG, self.RES, self.INIT
 
+    def get_alignment_id(self):
+        return self.alignment.name
+
     def increase_stat(self, stat_name, incr):
         setattr(self, stat_name, getattr(self, stat_name) + incr)
 

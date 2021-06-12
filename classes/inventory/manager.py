@@ -6,6 +6,7 @@ from logger import printf
 class InventoryManager:
     def __init__(self, players):
         self.inventory = inventory.Inventory(players)
+        self.setup_starting_inventory(players)
 
     def add_item(self, item_id):
         if not item_id in ci.CLASSES:
@@ -35,7 +36,6 @@ class InventoryManager:
                     continue
                 player = self.inventory.equip_item_to_player(player, item)
                 players[player.name] = player
-                printf('Successfull!')
                 printf(player)
 
             elif mode == 2:
@@ -143,10 +143,21 @@ class InventoryManager:
 
         return mode
 
+    def setup_starting_inventory(self, players):
+        for player in players.values():
+            if player.get_alignment_id() == 'mage':
+                item_id = 'Wand'
+            elif player.get_alignment_id() == 'fighter':
+                item_id = 'Dagger'
+
+            self.add_item(item_id)
+            self.inventory.equip_item_to_player(player, item_id)
+
+
 def main():
     from classes.playerc import playerclass
 
-    p = playerclass.Player('ME', 'Human', 'Mage')
+    p = playerclass.Player('ME', 'Human', 'Fighter')
     print(p)
     p.increase_stat('HP', -2)
     ps = {p.name: p}

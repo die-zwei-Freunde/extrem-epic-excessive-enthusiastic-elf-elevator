@@ -25,12 +25,20 @@ class Inventory:
     def equip_item_to_player(self, player, item_id):
         player_dict = self.assignments[player.name]
         item = self.equippables[item_id]
-        if not self.check_if_equippable(player_dict, item_id) and not item.equipped:
+        if player.get_alignment_id().capitalize() not in item.align:
+            print('You cannot equip this item, your alignment is not right.')
+            return player
+        if self.check_if_equippable(player_dict, item_id) and not item.equipped:
             player.equip_item(self.equippables[item_id])
             self.equippables[item_id].equipped = True
-            self.assignments[player.name][item_id] = item
 
-        if self.check_if_equippable(player_dict, item_id) and not item.equipped:
+            if item.type == 'both_hands':
+                self.assignments[player.name]['left_hand'] = item
+                self.assignments[player.name]['right_hand'] = item
+            else:
+                self.assignments[player.name][item.type] = item
+
+        if not self.check_if_equippable(player_dict, item_id) and not item.equipped:
             choice = input(f'You already have a {item.type} ({item.id}) equipped; want to swap items? (y/n)\n')
             if choice == 'y' or choice == 'yes':
                 old_item = player_dict[item.type]
@@ -38,7 +46,11 @@ class Inventory:
                 self.equippables[old_item.id].equipped = False
 
                 self.equippables[item_id].equipped = True
-                self.assignments[player.name][item_id] = item
+                if item.type == 'both_hands':
+                    self.assignments[player.name]['left_hand'] = item
+                    self.assignments[player.name]['right_hand'] = item
+                else:
+                    self.assignments[player.name][item.type] = item
 
             else:
                 print('Cannot equip this item!')
@@ -85,9 +97,8 @@ class Inventory:
                 return True
             else:
                 return False
-
         else:
-            return dictionary[item.type]
+            return bool(dictionary[item.type])
 
     def _setup_assign(self, players):
         ass = {}

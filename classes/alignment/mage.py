@@ -5,7 +5,8 @@ from classes.ability.alignment import mage
 class Mage(Alignment):
     ''' Mage Alignment class '''
     def __init__(self):
-        super().__init__(False)
+        #name = 'mage'
+        super().__init__('mage', False)
 
     def _setup_skills(self):
         return [mage.Fireball()]

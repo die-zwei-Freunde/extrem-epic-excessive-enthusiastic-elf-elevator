@@ -3,8 +3,9 @@ class Alignment():
     Interface for creating an Alignment.
     Needs a method for adjusting the Base stats.
     '''
-    def __init__(self, verbose=False):
+    def __init__(self, name=None, verbose=False):
         self.verbose = verbose
+        self.name = name
         self.skills = self._setup_skills()
 
     def adjust_stats(self, stats):

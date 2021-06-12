@@ -5,7 +5,8 @@ from classes.ability.alignment import fighter
 class Fighter(Alignment):
     ''' Fighter Alignment class '''
     def __init__(self):
-        super().__init__(False)
+        #name = 'fighter'
+        super().__init__('fighter', False)
 
     def _setup_skills(self):
         return [fighter.QuickStrike()]

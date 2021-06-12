@@ -23,3 +23,28 @@ class RunicStaff(equippable.Equippable):
         INIT = 1
 
         return HP, ATT, DEF, MAG, RES, INIT
+
+
+class CrookedWand(equippable.Equippable):
+    """A crooked wand of magic. More like a stick, actually. Sticks and stones may brake your bones, but this one
+    probably wont."""
+    def __init__(self):
+        name = "Wand"
+        race = ['all']
+        alignment = ['Mage']
+
+        super().__init__(name, race, alignment)
+
+    def _setup_type(self):
+        return 'both_hands'
+
+    def _setup_stat_increase(self):
+        """Return the stat changes; if the stat changes, return 0 for that stat."""
+        HP = 0
+        ATT = 0
+        DEF = 0
+        MAG = 1
+        RES = 0
+        INIT = 1
+
+        return HP, ATT, DEF, MAG, RES, INIT
