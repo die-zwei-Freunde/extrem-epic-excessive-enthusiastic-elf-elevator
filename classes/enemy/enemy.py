@@ -42,7 +42,9 @@ class Enemy():
 
     def get_stats(self):
         return self.HP, self.ATT, self.DEF, self.MAG, self.RES, self.INIT
-    
+
+    def decrease_stat(self, attr, incr):
+        setattr(self, attr, getattr(self, attr) - incr)
 
     def change_stat(self, attr, val):
         setattr(self, attr, val)

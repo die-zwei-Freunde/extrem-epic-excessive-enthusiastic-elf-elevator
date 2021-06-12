@@ -12,4 +12,4 @@ class Fireball(skill.Skill):
         return 6
 
     def _setup_cooldown(self):
-        return 3
+        return 4

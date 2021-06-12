@@ -1,6 +1,7 @@
 import numpy as np
 from logger import printf
 
+
 class BattleManager():
     '''
     This class handles all the battling.
@@ -10,6 +11,10 @@ class BattleManager():
         self.players = players
         self.enemies = enemies
 
+        self.all_players = {}
+        for players in self.players:
+            self.all_players[players.name] = players
+
     def run(self):
         counter = 1
 
@@ -18,23 +23,27 @@ class BattleManager():
             printf('- Round {}'.format(counter))
             self.battle(counter)
             counter += 1
+            for players in self.players:
+                self.all_players[players.name] = players
+
+            if counter >= 100:
+                raise ValueError('Somethings wrong!')
 
         if self.players:
             printf('Congrats! You won!')
-            return True
+            return self.all_players, True
         elif self.enemies:
             printf('You lost, man.')
-            return False
+            return self.all_players, False
 
 
     def battle(self, counter):
         actors = []
         for player in self.players:
-            if player.INIT % counter == 0 and player.INIT <= counter:
+            if counter % player.INIT == 0:# and player.INIT <= counter:
                 actors.append((player, self.players.index(player)))
         for enemy in self.enemies:
-            if enemy.INIT % counter == 0 and enemy.INIT <= counter:
-                printf(enemy.INIT >= counter)
+            if counter % enemy.INIT == 0: #and enemy.INIT <= counter
                 actors.append((enemy, self.enemies.index(enemy)))
 
         for act in actors:
@@ -42,13 +51,15 @@ class BattleManager():
             printf('It is {}s turn to attack!'.format(actor.name))
             target, t_id, t_index = self.choose_target(actor)
             skill = self.choose_skill(actor)
+            if type(skill) == int:
+                return 0
             dmg, buff, debuff = self.act(actor, skill, target)
 
             self.apply(actor, actor_index, target, t_index, dmg, buff, debuff)
 
-        self.check_for_dead()
-        
+        self.reduce_cooldown()
 
+        self.check_for_dead()
 
     def apply(self, actor, act_id, target, target_id, dmg, buff, debuff):
         if buff:
@@ -56,17 +67,18 @@ class BattleManager():
         if debuff:
             printf('Not yet implemented!')
 
+        #TODO implement dice feature
         printf('\n {} deals {} points of damage to {}.\n'.format(actor.name,
                                                                 dmg,
                                                                 target.name))
 
         if target in self.players:
             current_HP = self.players[target_id].HP
-            self.players[target_id].change_stat('HP', current_HP - dmg)
+            self.players[target_id].decrease_stat('HP', dmg)
 
         if target in self.enemies:
             current_HP = self.enemies[target_id].HP
-            self.enemies[target_id].change_stat('HP', current_HP - dmg)
+            self.enemies[target_id].decrease_stat('HP', dmg)
    
  
     def act(self, actor, skill, target):
@@ -89,17 +101,16 @@ class BattleManager():
 
 
     def check_for_dead(self):
-        del_array = []
         for player in self.players:
             if player.HP <= 0:
                 printf('Oh no! Player {} died!\n'.format(player.name))
                 self.players.remove(player)
+                self.all_players[player.name] = player
+
         for enemy in self.enemies:
             if enemy.HP <= 0:
                 printf('Ha! Enemy {} died!\n'.format(enemy.name))
                 self.enemies.remove(enemy)
-            
-
 
     def choose_target(self, actor):
         if actor in self.players:
@@ -120,9 +131,6 @@ class BattleManager():
 
         return target, target_id, target_index
 
-        
-
-
     def choose_skill(self, player):
         if player in self.players:
             act_id = 'player'
@@ -134,6 +142,7 @@ class BattleManager():
         for skill in skills:
             if skill.is_available():
                 skill_dict[skill.name] = skill
+
         if not skill_dict:
             printf('All your skills are on cooldown. You cannot move, fam.\n')
             return 0
@@ -179,4 +188,8 @@ class BattleManager():
                 printf('That did not work, wrong name. Try again.')
 
         return target, target.name, target_list.index(target)
+
+    def reduce_cooldown(self):
+        for player in self.players:
+            player.apply_cooldown('')
             

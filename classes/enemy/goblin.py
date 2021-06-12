@@ -10,6 +10,8 @@ class BasicGoblin(enemy.Enemy):
     def __init__(self, name=None):
         self.id = 'Basic Goblin'
 
+        if not name:
+            name = 'One of a kind'
         super().__init__(name)
 
     def _setup_skills(self):
@@ -29,10 +31,10 @@ class TankGoblin(enemy.Enemy):
     '''
     The tanky one. A bit thick, but also thicccc.
     '''
-    def __init__(self, name=None, MAX_HP=2, MAX_STAM=1):
+    def __init__(self, name=None):
         self.id = 'Tank Goblin'
 
-        super().__init__(name, MAX_HP, MAX_STAM)
+        super().__init__(name)
 
     def _setup_skills(self):
         return [goblin.Tackle()]
