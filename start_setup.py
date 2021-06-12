@@ -19,7 +19,8 @@ def start_setup():
 
 
 def intro():
-    printf("""INTRO!""")
+    printf("""You're about to enter the world of Jan and Piwo.
+These are the gods of this world. Whatever you do, do not anger them!""")
 
 
 def setup_player():
