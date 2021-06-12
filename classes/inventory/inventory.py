@@ -39,6 +39,7 @@ class Inventory:
             self.equippables[item_id].equipped = False
 
         else:
+            print('Item not equipped!')
             pass
 
         return player
@@ -88,3 +89,13 @@ class Inventory:
             ass[player.name] = player_dict
 
         return ass
+
+    def get_assignments(self):
+        return self.assignments
+
+    def __repr__(self):
+        intro = "Inventory: \n"
+        eq = f"Equippable items:\n{[item for item in self.equippables.values()]}.\n"
+        us = f"Useable items:\n{[item for item in self.useables.values()]}.\n"
+
+        return intro + eq + us
