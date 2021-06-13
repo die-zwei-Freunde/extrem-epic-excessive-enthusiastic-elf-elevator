@@ -10,7 +10,7 @@ class InventoryManager:
 
     def add_item(self, item_id):
         if not item_id in ci.CLASSES:
-            raise KeyError('You may not have added your item in the __init__.py of classes.item.')
+            raise KeyError(f'You may not have added your item {item_id} in the __init__.py of classes.item.')
 
         item = ci.CLASSES[item_id]()
         self.inventory.add_item(item)

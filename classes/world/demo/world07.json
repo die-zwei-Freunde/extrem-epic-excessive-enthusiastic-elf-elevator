@@ -1,0 +1,18 @@
+{
+    "prestring": "You quickly tell the city guards of the scream you heard.\nDutifully, the guard quickly moves to the gatesto protect the citizens. Leaving the door wide open. Unlocked.\nWell, you extend your inventory by a few shiny blacksmitheries, and leave the city on the rear end.",
+    "action": {
+        "type": "loot",
+        "loot": [
+            "Stillet",
+            "Rod of Hellfire",
+            "Earring of Defense",
+            "Small health potion"
+        ]
+    },
+    "poststring": "Once you arrive at the rear gate, you see a creature that rises from the ashes of\nwhat appears to be a burnt-down farm. Without the guard to protect the city, what will you do?",
+    "decision": {
+        "a": "Fight the demon.",
+        "b": "Hide with your stolen armory, you coward."
+    },
+    "Endpoint": false
+}

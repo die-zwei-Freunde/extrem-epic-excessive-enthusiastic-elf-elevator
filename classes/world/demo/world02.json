@@ -1,0 +1,12 @@
+{
+    "prestring": "Following the bravery in your heart and the scream to its origin, you find a little girl, flanked by two creatures that can only be described by gross.\nWell, one of them is gross in an english sense, and the other one is gross in german. No matter what, you have to something, that much is clear.",
+    "action": {
+        "type": "null"
+    },
+    "poststring": "",
+    "decision": {
+        "a": "Defend the girl!",
+        "b": "Hide, and wait for the creatures to be done with their ... deed."
+    },
+    "Endpoint": false
+}

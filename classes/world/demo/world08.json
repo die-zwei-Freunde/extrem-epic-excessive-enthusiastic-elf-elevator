@@ -1,0 +1,19 @@
+{
+    "prestring": "You charge the demon head-first. Prepare yourself!",
+    "action": {
+        "type": "battle",
+        "enemy": [
+            "Demon"
+        ],
+        "loot": [
+            "Runic Staff of Horror",
+            "Ring of Magic",
+            "Small health potion"
+        ]
+    },
+    "poststring": "You somehow managed to kill the demon. However, the fight also triggered the greatest pollen\nemission in recorded history, forbidden by holy law. Just then, the sky cracks and down rains judgement\non you, in form of the God of Light, Jan. Prepare to die.",
+    "decision": {
+        "a": "Prepare to die."
+    },
+    "Endpoint": false
+}

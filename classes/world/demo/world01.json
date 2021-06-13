@@ -1,0 +1,13 @@
+{
+    "prestring": "\nHello everyone! Welcome, to the world of Nerdington!\n This demo is brought to you by - oh wait, notthe right time, I suppose. You will come across monsters, and people, that are so generic, you might not be able to tell the difference between the two.\n In any case, have fun!\n\nYou will be able to manipulate your inventory after every interaction. You will get the hang of it soon.",
+    "action": {
+        "type": "null"
+    },
+    "poststring": "You start in the beautiful town of Fehnerrhaude. Just after getting some royally delicious donuts from your local bakery, you hear a scream from outside of town.\n What do you want to do?\n",
+    "decision": {
+        "a": "Follow the scream.",
+        "b": "Alert the city guard.",
+        "c": "Mind your own fucking business."
+    },
+    "Endpoint": false
+}
