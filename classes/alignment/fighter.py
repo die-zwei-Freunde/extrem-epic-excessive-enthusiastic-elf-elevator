@@ -29,7 +29,7 @@ class Fighter(Alignment):
 
     def _adjust_RES(self, RES):
         ''' Adjust the RES for the given alignment '''
-        return RES 1
+        return RES + 1
 
     def _adjust_INIT(self, INIT):
         ''' Adjust the INIT for the given alignment '''
