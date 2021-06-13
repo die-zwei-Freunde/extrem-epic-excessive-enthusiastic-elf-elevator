@@ -8,13 +8,13 @@ class Human(race.Race):
         super().__init__(verbose=False)
 
     def _setup_stats(self):
-        HP = 2
+        HP = 7
         ATT = 4
         DEF = 3
         MAG = 3
         RES = 4
-        INIT = 4
-        LUCK = 1
+        INIT = 11
+        LUCK = 0
 
         return HP, ATT, DEF, MAG, RES, INIT, LUCK
 
