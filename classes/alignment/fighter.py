@@ -34,6 +34,9 @@ class Fighter(Alignment):
     def _adjust_INIT(self, INIT):
         ''' Adjust the INIT for the given alignment '''
         return INIT - 2
+
+    def _adjust_LUCK(self, LUCK):
+        return LUCK
  
     def __repr__(self):
         return 'Fighter'

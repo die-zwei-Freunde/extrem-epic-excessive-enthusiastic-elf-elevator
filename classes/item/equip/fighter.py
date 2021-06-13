@@ -22,8 +22,9 @@ class BloodyGlovesOfDemiGodJan(equippable.Equippable):
         MAG = 0
         RES = -1
         INIT = -3
+        LUCK = 0
 
-        return HP, ATT, DEF, MAG, RES, INIT
+        return HP, ATT, DEF, MAG, RES, INIT, LUCK
 
 
 class StandardDagger(equippable.Equippable):
@@ -47,5 +48,6 @@ class StandardDagger(equippable.Equippable):
         MAG = 0
         RES = 0
         INIT = -1
+        LUCK = 0
 
-        return HP, ATT, DEF, MAG, RES, INIT
+        return HP, ATT, DEF, MAG, RES, INIT, LUCK

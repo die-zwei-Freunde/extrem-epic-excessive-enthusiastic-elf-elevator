@@ -9,7 +9,7 @@ class Equippable(item.Item):
         self.equipped = False
 
         self.type = self._setup_type()
-        self.dHP, self.dATT, self.dDEF, self.dMAG, self.dRES, self.dINIT = self._setup_stat_increase()
+        self.dHP, self.dATT, self.dDEF, self.dMAG, self.dRES, self.dINIT, self.dLUCK = self._setup_stat_increase()
         self.restrictions = self._setup_restrictions()
 
     def get_dHP(self):
@@ -30,6 +30,9 @@ class Equippable(item.Item):
     def get_dINIT(self):
         return self.dINIT
 
+    def get_dLUCK(self):
+        return self.dLUCK
+
     def _setup_type(self):
         """Setup the type of equippable item (left_hand, right_hand, both_hands,
          head, body, boots, ring, earring, other)"""
@@ -46,5 +49,6 @@ class Equippable(item.Item):
 
     def __repr__(self):
         string = f"Item: {self.id}.\nRaces: {self.race}, Alignments: {self.align}\nStat changes: HP: {self.dHP}, " \
-                 f"ATT: {self.dATT}, DEF: {self.dDEF},\nMAG: {self.dMAG}, RES: {self.dRES}, INIT: {self.dINIT}."
+                 f"ATT: {self.dATT}, DEF: {self.dDEF},\nMAG: {self.dMAG}, RES: {self.dRES}, INIT: {self.dINIT}," \
+                 f" LUCK: {self.dLUCK}."
         return string

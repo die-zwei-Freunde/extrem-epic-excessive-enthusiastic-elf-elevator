@@ -14,13 +14,14 @@ class Player:
         self.alignment = self._setup_alignment(alignment)
         
         self.HP, self.ATT, self.DEF, \
-                 self.MAG, self.RES, self.INIT = self.setup_stats()
+                 self.MAG, self.RES, self.INIT, self.LUCK = self.setup_stats()
         self.MAX_HP = self.HP
         self.MAX_ATT = self.ATT
         self.MAX_DEF = self.DEF
         self.MAX_MAG = self.MAG
         self.MAX_RES = self.RES
         self.MAX_INIT = self.INIT
+        self.MAX_LUCK = self.LUCK
 
         self.skills = self._setup_skills()
 
@@ -45,12 +46,19 @@ class Player:
         self.increase_stat('INIT', item.dINIT)
         self.increase_stat('MAX_INIT', item.dINIT)
 
+        self.increase_stat('LUCK', item.dLUCK)
+        self.increase_stat('MAX_LUCK', item.dLUCK)
+
         if self.INIT <= 0:
             self.INIT = 1
             self.MAX_INIT = 1
 
         if self.HP <= 0:
             self.HP = 0
+
+        if self.LUCK <= 0:
+            self.LUCK = 1
+            self.MAX_LUCK = 1
 
         self.items[item.id] = item
 
@@ -78,9 +86,16 @@ class Player:
         self.decrease_stat('INIT', item.dINIT)
         self.decrease_stat('MAX_INIT', item.dINIT)
 
+        self.decrease_stat('LUCK', item.dLUCK)
+        self.decrease_stat('MAX_LUCK', item.dLUCK)
+
         if self.INIT <= 0:
             self.INIT = 1
             self.MAX_INIT = 1
+
+        if self.LUCK <= 0:
+            self.LUCK = 1
+            self.MAX_LUCK = 1
 
         del self.items[item.id]
 
@@ -174,5 +189,5 @@ class Player:
 
         """Displays the stats of a player
         returns a string that can be printed and holds the current stats of the player"""
-        return """{}:\n Race: {}, Alignment: {}, \n HP: {},\n ATT: {},\n DEF: {},\n MAG: {},\n RES: {},\n INIT: {}\n """.format(\
-            self.name, self.race, self.alignment, self.HP, self.ATT, self.DEF, self.MAG, self.RES, self.INIT)
+        return """{}:\n Race: {}, Alignment: {}, \n HP: {},\n ATT: {},\n DEF: {},\n MAG: {},\n RES: {},\n INIT: {}\n LUCK: {}""".format(\
+            self.name, self.race, self.alignment, self.HP, self.ATT, self.DEF, self.MAG, self.RES, self.INIT, self.LUCK)

@@ -21,8 +21,9 @@ class RunicStaff(equippable.Equippable):
         MAG = 2
         RES = 1
         INIT = 1
+        LUCK = 0
 
-        return HP, ATT, DEF, MAG, RES, INIT
+        return HP, ATT, DEF, MAG, RES, INIT, LUCK
 
 
 class CrookedWand(equippable.Equippable):
@@ -46,5 +47,6 @@ class CrookedWand(equippable.Equippable):
         MAG = 1
         RES = 0
         INIT = 1
+        LUCK = 0
 
-        return HP, ATT, DEF, MAG, RES, INIT
+        return HP, ATT, DEF, MAG, RES, INIT, LUCK

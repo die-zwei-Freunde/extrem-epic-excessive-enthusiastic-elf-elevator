@@ -14,8 +14,9 @@ class Orc(race.Race):
         MAG = 1
         RES = 2
         INIT = 6
+        LUCK = 1
 
-        return HP, ATT, DEF, MAG, RES, INIT
+        return HP, ATT, DEF, MAG, RES, INIT, LUCK
 
     def _setup_skills(self):
         return [orc.BigSlash()]

@@ -35,5 +35,8 @@ class Mage(Alignment):
         ''' Adjust the INIT for the given alignment '''
         return INIT - 1
 
+    def _adjust_LUCK(self, LUCK):
+        return LUCK
+
     def __repr__(self):
         return 'Mage'

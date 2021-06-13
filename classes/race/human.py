@@ -14,8 +14,9 @@ class Human(race.Race):
         MAG = 3
         RES = 4
         INIT = 4
+        LUCK = 1
 
-        return HP, ATT, DEF, MAG, RES, INIT
+        return HP, ATT, DEF, MAG, RES, INIT, LUCK
 
     def _setup_skills(self):
         return [human.StrikeOfHonor()]

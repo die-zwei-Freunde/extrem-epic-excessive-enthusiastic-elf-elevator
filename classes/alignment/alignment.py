@@ -19,7 +19,9 @@ class Alignment():
         MAG = self._adjust_MAG(stats[3])
         RES = self._adjust_RES(stats[4])
         INIT = self._adjust_INIT(stats[5])
-        return HP, ATT, DEF, MAG, RES, INIT
+        LUCK = self._adjust_LUCK(stats[6])
+
+        return HP, ATT, DEF, MAG, RES, INIT, LUCK
 
     def get_alignment_skills(self):
         return self.skills
@@ -49,6 +51,9 @@ class Alignment():
 
     def _adjust_INIT(self, INIT):
         ''' Adjust the INIT for the given alignment '''
+        raise NotImplementedError()
+
+    def _adjust_LUCK(self, LUCK):
         raise NotImplementedError()
 
     def __repr__(self):
