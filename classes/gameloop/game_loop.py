@@ -7,6 +7,7 @@ import testing.input_testing as test
 import classes.inventory.manager as inv
 import classes.action.manager as act
 
+
 class Game_loop:
     def __init__(self):
         self.players = setup.start_setup()
@@ -36,7 +37,7 @@ class Game_loop:
             if not endpoint:
                 self.players = self.inventory.manage(self.players)
                 for key in keys:
-                    printf(decision[key])
+                    printf(key, ':', decision[key])
                 inp = input(f'What will you choose? {keys} ')
                 inp = test.test_decision(inp, keys)
                 self.flag = self.flag + inp
