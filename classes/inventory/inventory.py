@@ -13,6 +13,7 @@ class Inventory:
 
         item = self.useables[item_id]
         player.use_item(item)
+        del self.useables[item_id]
 
         return player
 
@@ -84,10 +85,11 @@ class Inventory:
         return player
 
     def add_item(self, item):
+        item_id = self._setup_item_id(item)
         if item.designation == 'equippable':
-            self.equippables[item.id] = item
+            self.equippables[item_id] = item
         elif item.designation == 'useable':
-            self.useables[item.id] = item
+            self.useables[item_id] = item
 
         else:
             raise NotImplementedError(f'Item designation {item.designation} not understood.')
@@ -100,6 +102,24 @@ class Inventory:
 
         else:
             raise KeyError('Item not found in inventory.')
+
+    def _setup_item_id(self, item):
+        if item.designation == 'equippable':
+            search = self.equippables
+        elif item.designation == 'useable':
+            search = self.useables
+
+        suffix = ''
+        counter = 1
+        while True:
+            if not item.id+suffix in search.keys():
+                item_id = item.id + suffix
+                break
+            else:
+                suffix = f' ({counter})'
+                counter += 1
+
+        return item_id
 
     def check_if_equippable(self, dictionary, item_id):
         item = self.equippables[item_id]
@@ -131,7 +151,7 @@ class Inventory:
 
     def __repr__(self):
         intro = "Inventory: \n"
-        eq = f"Equippable items:\n{[item.id for item in self.equippables.values()]}.\n"
-        us = f"Useable items:\n{[item.id for item in self.useables.values()]}.\n"
+        eq = f"Equippable items:\n{[key for key in self.equippables.keys()]}.\n"
+        us = f"Useable items:\n{[key for key in self.useables.keys()]}.\n"
 
         return intro + eq + us

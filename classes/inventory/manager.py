@@ -187,6 +187,11 @@ def main():
     i.add_item('Small health potion')
     i.add_item('Bloody Gloves of a Demi-God')
     i.add_item('Runic Staff of Horror')
+    i.add_item('Small health potion')
+    i.add_item('Small health potion')
+    i.add_item('Small health potion')
+    i.add_item('Small health potion')
+
     ps = i.manage(ps)
     print(ps)
 
