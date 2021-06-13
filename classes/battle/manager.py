@@ -1,5 +1,6 @@
 import numpy as np
 from logger import printf
+import time
 
 
 class BattleManager():
@@ -56,6 +57,7 @@ class BattleManager():
             dmg, buff, debuff = self.act(actor, skill, target)
 
             self.apply(actor, actor_index, target, t_index, dmg, buff, debuff)
+            time.sleep(2)
 
         self.reduce_cooldown()
 
@@ -92,8 +94,8 @@ class BattleManager():
 
         # HERE IS WHERE THE FANCY MATH STUFF WOULD HAPPEN
 
-        if defval < attval:
-            val = dmg
+        if defval < attval + dmg:
+            val = np.abs(defval - (attval + dmg))
         else:
             val = 0
 
@@ -176,7 +178,8 @@ class BattleManager():
             
             string = ''' Select (by name) your target from the list below:\n'''
             for act in target_list:
-                string += str(act)
+                s = f'-- Enemy: {act.name} - HP: {act.HP} - Debuff: None - Buff: None\n'
+                string += s
 
             name = input(string)
             try:

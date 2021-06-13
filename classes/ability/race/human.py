@@ -10,7 +10,7 @@ class StrikeOfHonor(skill.Skill):
         super().__init__(name, designation)
 
     def _setup_damage(self):
-        return 3
+        return 6
 
     def _setup_cooldown(self):
-        return 1
+        return 10

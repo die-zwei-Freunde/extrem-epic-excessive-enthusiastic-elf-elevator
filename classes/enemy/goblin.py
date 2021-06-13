@@ -10,6 +10,8 @@ class BasicGoblin(enemy.Enemy):
     def __init__(self, name=None):
         self.id = 'Basic Goblin'
 
+        super().__init__(name)
+
     def _setup_skills(self):
         return [goblin.Tackle()]
 

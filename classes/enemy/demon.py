@@ -9,15 +9,17 @@ class Demon(enemy.Enemy):
     def __init__(self, name=None):
         self.id = 'Demon'
 
+        super().__init__(name)
+
     def _setup_skills(self):
         return [demon.DemonFire(), demon.DemonStrike()]
 
     def _setup_stats(self):
-        HP = 50
-        ATT = 20
-        DEF = 15
-        MAG = 30
-        RES = 20
+        HP = 30
+        ATT = 5
+        DEF = 7
+        MAG = 5
+        RES = 10
         INIT = 6
 
         return HP, ATT, DEF, MAG, RES, INIT
