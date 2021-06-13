@@ -1,0 +1,19 @@
+{
+    "prestring": "Under your watchful eyes, you see the reason the goblins attacked this seemingly innocent little girl.\nThe little girl rises, and not stopping the laughter, extends its ... wings? As it rises into the air,you see its eyes preying on you.\nMake yourself ready to fight, due to your poor judgement in character!\n",
+    "action": {
+        "type": "battle",
+        "enemy": [
+            "Demon"
+        ],
+        "loot": [
+            "Ring of Magic",
+            "Bloody Gloves of a Demi-God",
+            "Small health potion"
+        ]
+    },
+    "poststring": "Somehow, you pull through. You find what to appears to be some bloody gloves. In ths exact moment, you hear a rumbling from the sky. It feels like the sky opens, and there he appears: The luminous appearence that calls himself God of Light, Jan. He does not like you killing some innocent child.",
+    "decision": {
+        "a": "Prepare to die."
+    },
+    "Endpoint": false
+}

@@ -1,0 +1,16 @@
+{
+    "prestring": "You hide, while the demon extends its wrath on the surrounding farmland.\nJust then, the earth shakes, and there rises the God of Judgement, Piwo.\nIn one swoop, he erases any trace that the demon even existed, and turns his eyes on you.\nWith the snap of his fingers, the sky tears open and summons the God of Lightning, Jan.\nThey do not tolarate immorality; prepare to die.",
+    "action": {
+        "type": "battle",
+        "enemy": [
+            "GodJan",
+            "GodPiwo"
+        ],
+        "loot": []
+    },
+    "poststring": "",
+    "decision": {
+        "a": "Prepare to die."
+    },
+    "Endpoint": true
+}

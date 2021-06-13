@@ -26,7 +26,7 @@ class Inventory:
     def equip_item_to_player(self, player, item_id):
         player_dict = self.assignments[player.name]
         item = self.equippables[item_id]
-        if player.get_alignment_id().capitalize() not in item.align:
+        if player.get_alignment_id().capitalize() not in item.align and not 'all' in item.align:
             print('You cannot equip this item, your alignment is not right.')
             return player
 

@@ -1,0 +1,14 @@
+{
+    "prestring": "You immoral bastards decide to let the goblins rape and kill the little girl.\nWell, looting is another form of self-defence, I guess. Just as you about to strike the remaining goblins, feasting on the child,\na tear opens in the sky and strikes down the goblins in front of you.\nYou angered the God of Light, Jan, and judgement will rain down on you. Are you ready to die?",
+    "action": {
+        "type": "loot",
+        "loot": [
+            "Small health potion"
+        ]
+    },
+    "poststring": "",
+    "decision": {
+        "a": "Prepare to die."
+    },
+    "Endpoint": false
+}

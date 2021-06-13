@@ -1,0 +1,19 @@
+{
+    "prestring": "You jump in to defend the little girl! Ready yourself!\n",
+    "action": {
+        "type": "battle",
+        "enemy": [
+            "Basic Goblin",
+            "Tank Goblin"
+        ],
+        "loot": [
+            "Ring of Power",
+            "Small health potion"
+        ]
+    },
+    "poststring": "You did it! Considering this was your first fight, you did great!\nAnd the little girl apparently thinks so as well, because she starts laughing. Well, quite manically, actually.",
+    "decision": {
+        "a": "Turn to see what is up with the girl."
+    },
+    "Endpoint": false
+}

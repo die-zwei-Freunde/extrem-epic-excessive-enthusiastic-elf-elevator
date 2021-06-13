@@ -82,7 +82,7 @@ class Stillet(equippable.Equippable):
 class BloodCloakDagger(equippable.Equippable):
     """A dagger from the very accomplished blacksmith von Blood-Cloak. Wait, you dont know him? Good for you, I guess."""
     def __init__(self):
-        name = "Blood Coat Dagger"
+        name = "Blood Cloak Dagger"
         race = ['all']
         alignment = ['Fighter']
 

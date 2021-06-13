@@ -1,0 +1,24 @@
+{
+    "prestring": "You just turn around and explore the streets of the city. Or at least you try, \nas a horde of small Goblins attacks from nowhere! Prepare yourself!",
+    "action": {
+        "type": "battle",
+        "enemy": [
+            "Basic Goblin",
+            "Tank Goblin",
+            "Basic Goblin",
+            "Basic Goblin"
+        ],
+        "loot": [
+            "Small health potion",
+            "Small health potion",
+            "Earring of Defense",
+            "Blood Cloak Dagger",
+            "Wand of Avalon"
+        ]
+    },
+    "poststring": "You wipe your faces of the blood of the fallen. You swear on the race of all Goblins, being \nquite racist actually. Which is a holy sin, that is punishable by death. But there is noone - \njust then, the earth beneath your feet rumbles and thus emerges the God of Judgement, Piwo, \nto bring you rightous judgement. Prepare to die.",
+    "decision": {
+        "a": "Prepare to die."
+    },
+    "Endpoint": false
+}

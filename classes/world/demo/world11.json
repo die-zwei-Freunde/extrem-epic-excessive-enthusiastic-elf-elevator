@@ -1,0 +1,15 @@
+{
+    "prestring": "Prepare to die.",
+    "action": {
+        "type": "battle",
+        "enemy": [
+            "GodPiwo"
+        ],
+        "loot": []
+    },
+    "poststring": "",
+    "decision": {
+        "a": "Prepare to die."
+    },
+    "Endpoint": true
+}
