@@ -6,6 +6,8 @@ from logger import printf
 import classes.world.worldclass as w
 import json
 
+# w.World('demo')
+
 
 # story = {'prestring': """How could you be so stupid and a bookshelf, when the great god Jan could always watch you.
 # He attacks you with all he has. Make yourself ready to die!""",
