@@ -48,3 +48,12 @@ def test_decision(inp, keys):
     while inp not in keys:
         inp = input(f"Your input wasn't one of the options, please try again: {keys} ")
     return inp
+
+
+def test_quest(inp, quest):
+
+        while inp not in quest:
+            inp = input(f"Your input wasn't an option, please try again. {quest}")
+
+        inp = int(inp)
+        return inp

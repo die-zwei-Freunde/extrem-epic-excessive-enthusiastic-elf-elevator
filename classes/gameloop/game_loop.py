@@ -10,15 +10,14 @@ import classes.action.manager as act
 
 class Game_loop:
     def __init__(self):
-        self.players = setup.start_setup()
+        self.players, self.quest = setup.start_setup()
         self.flag = ''
-        wld.World()
         self.inventory = inv.InventoryManager(self.players)
 
     def run(self):
         endpoint = False
         while not endpoint:
-            story = wld.World().next(self.flag)
+            story = wld.World(self.quest).next(self.flag)
             printf(story['prestring'])
             action = act.ActionManager(story['action'])
             self.players, loot, alive = action.start(self.players)
