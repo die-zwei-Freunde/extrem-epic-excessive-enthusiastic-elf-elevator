@@ -12,12 +12,13 @@ class Game_loop:
     def __init__(self):
         self.players, self.quest = setup.start_setup()
         self.flag = ''
+        self.world = wld.World(self.quest)
         self.inventory = inv.InventoryManager(self.players)
 
     def run(self):
         endpoint = False
         while not endpoint:
-            story = wld.World(self.quest).next(self.flag)
+            story = self.world.next(self.flag)
             printf(story['prestring'])
             action = act.ActionManager(story['action'])
             self.players, loot, alive = action.start(self.players)
