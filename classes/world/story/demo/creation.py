@@ -1,16 +1,15 @@
 import json
 
-name = 'world11'
+name = 'world13'
 
-prestring = 'Prepare to die.'
+prestring = 'You face the Light-God of this world, Jan. Prepare to die.'
 
 action_type = 'battle'
-enemy = ['GodPiwo']
+enemy = ['GodJan']
 loot = []
-poststirng = ''
+poststirng = 'Do not anger the gods of creation.'
 
 decision = {}
-decision['a'] = 'Prepare to die.'
 
 config = {}
 config['prestring'] = prestring

@@ -9,8 +9,6 @@
         "loot": []
     },
     "poststring": "",
-    "decision": {
-        "a": "Prepare to die."
-    },
+    "decision": {},
     "Endpoint": true
 }
