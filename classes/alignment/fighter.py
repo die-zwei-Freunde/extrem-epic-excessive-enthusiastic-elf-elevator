@@ -13,15 +13,15 @@ class Fighter(Alignment):
 
     def _adjust_HP(self, HP):
         ''' Adjust the HP for the given alignment '''
-        return HP + 1
+        return HP + 4
 
     def _adjust_ATT(self, ATT):
         ''' Adjust the ATT for the given alignment '''
-        return ATT + 2
+        return ATT + 5
 
     def _adjust_DEF(self, DEF):
         ''' Adjust the DEF for the given alignment '''
-        return DEF + 1
+        return DEF + 3
 
     def _adjust_MAG(self, MAG):
         ''' Adjust the MAG for the given alignment '''
@@ -29,7 +29,7 @@ class Fighter(Alignment):
 
     def _adjust_RES(self, RES):
         ''' Adjust the RES for the given alignment '''
-        return RES 
+        return RES + 1
 
     def _adjust_INIT(self, INIT):
         ''' Adjust the INIT for the given alignment '''

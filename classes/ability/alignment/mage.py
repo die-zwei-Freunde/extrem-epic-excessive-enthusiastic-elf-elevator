@@ -9,7 +9,7 @@ class Fireball(skill.Skill):
         super().__init__(name, designation, attr='Fire')
 
     def _setup_damage(self):
-        return 6
+        return 8
 
     def _setup_cooldown(self):
-        return 4
+        return 20

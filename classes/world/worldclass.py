@@ -4,8 +4,8 @@ import json
 
 
 class World:
-    def __init__(self):
-        with open('classes/world/config1.json', 'r') as fp:
+    def __init__(self, quest):
+        with open('classes/world/story/' + quest + '/config.json', 'r') as fp:
             self.config = json.load(fp)
         self.fp = self.config['fp']
 

@@ -8,13 +8,13 @@ class Orc(race.Race):
         super().__init__()
 
     def _setup_stats(self):
-        HP = 4
+        HP = 9
         ATT = 5
-        DEF = 3
+        DEF = 4
         MAG = 1
-        RES = 2
-        INIT = 6
-        LUCK = 1
+        RES = 3
+        INIT = 12
+        LUCK = 0
 
         return HP, ATT, DEF, MAG, RES, INIT, LUCK
 

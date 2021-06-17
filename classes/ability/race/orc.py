@@ -10,10 +10,10 @@ class BigSlash(skill.Skill):
         super().__init__(name, designation)
 
     def _setup_damage(self):
-        return 4
+        return 7
 
     def _setup_cooldown(self):
-        return 2
+        return 15
 
 
 

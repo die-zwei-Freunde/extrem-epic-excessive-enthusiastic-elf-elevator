@@ -10,22 +10,21 @@ class BasicGoblin(enemy.Enemy):
     def __init__(self, name=None):
         self.id = 'Basic Goblin'
 
-        if not name:
-            name = 'One of a kind'
         super().__init__(name)
 
     def _setup_skills(self):
         return [goblin.Tackle()]
 
     def _setup_stats(self):
-        HP = 1
-        ATT = 1
-        DEF = 1
-        MAG = 1
-        RES = 1
-        INIT = 10
+        HP = 15
+        ATT = 13
+        DEF = 8
+        MAG = 2
+        RES = 8
+        INIT = 11
 
         return HP, ATT, DEF, MAG, RES, INIT
+
 
 class TankGoblin(enemy.Enemy):
     '''
@@ -40,11 +39,11 @@ class TankGoblin(enemy.Enemy):
         return [goblin.Tackle()]
 
     def _setup_stats(self):
-        HP = 5
-        ATT = 1
-        DEF = 3
-        MAG = 1
-        RES = 2
-        INIT = 15
+        HP = 20
+        ATT = 13
+        DEF = 10
+        MAG = 2
+        RES = 10
+        INIT = 13
 
         return HP, ATT, DEF, MAG, RES, INIT

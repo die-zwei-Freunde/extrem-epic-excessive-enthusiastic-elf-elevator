@@ -1,5 +1,6 @@
 """Handels the game setup"""
 
+import os
 from classes.playerc import playerclass as pc
 from testing import input_testing as inp
 from logger import printf
@@ -15,7 +16,9 @@ def start_setup():
 
     players = setup_player()
 
-    return players
+    quest = quest_line()
+
+    return players, quest
 
 
 def intro():
@@ -51,3 +54,17 @@ def setup_player():
         players[name] = p
         
     return players
+
+
+def quest_line():
+
+    subfolders = [f.name for f in os.scandir('classes/world/story') if f.is_dir()]
+    counter = []
+    for i, folder in enumerate(subfolders):
+        printf(f"[{i}] : ", folder)
+        counter.append(f'{i}')
+
+    quest = input('What questline do you wanna choose? ')
+    quest = inp.test_quest(quest, counter)
+
+    return subfolders[quest]

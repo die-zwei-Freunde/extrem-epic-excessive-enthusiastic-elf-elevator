@@ -1,5 +1,6 @@
 import numpy as np
 from logger import printf
+import time
 
 
 class BattleManager():
@@ -26,11 +27,9 @@ class BattleManager():
             for players in self.players:
                 self.all_players[players.name] = players
 
-            if counter >= 100:
-                raise ValueError('Somethings wrong!')
-
         if self.players:
             printf('Congrats! You won!')
+
             return self.all_players, True
         elif self.enemies:
             printf('You lost, man.')
@@ -48,7 +47,9 @@ class BattleManager():
 
         for act in actors:
             actor, actor_index = act
-            printf('It is {}s turn to attack!'.format(actor.name))
+            if actor not in self.enemies and actor not in self.players:
+                continue
+            printf('It is {}s turn to attack! [HP: {}]'.format(actor.name, actor.HP))
             target, t_id, t_index = self.choose_target(actor)
             skill = self.choose_skill(actor)
             if type(skill) == int:
@@ -56,10 +57,11 @@ class BattleManager():
             dmg, buff, debuff = self.act(actor, skill, target)
 
             self.apply(actor, actor_index, target, t_index, dmg, buff, debuff)
+            time.sleep(2)
+
+            self.check_for_dead()
 
         self.reduce_cooldown()
-
-        self.check_for_dead()
 
     def apply(self, actor, act_id, target, target_id, dmg, buff, debuff):
         if buff:
@@ -92,8 +94,8 @@ class BattleManager():
 
         # HERE IS WHERE THE FANCY MATH STUFF WOULD HAPPEN
 
-        if defval < attval:
-            val = dmg
+        if defval < attval + dmg:
+            val = np.abs(defval - (attval + dmg))
         else:
             val = 0
 
@@ -105,6 +107,7 @@ class BattleManager():
             if player.HP <= 0:
                 printf('Oh no! Player {} died!\n'.format(player.name))
                 self.players.remove(player)
+                player.HP = 1
                 self.all_players[player.name] = player
 
         for enemy in self.enemies:
@@ -176,7 +179,8 @@ class BattleManager():
             
             string = ''' Select (by name) your target from the list below:\n'''
             for act in target_list:
-                string += str(act)
+                s = f'-- Enemy: {act.name} - HP: {act.HP} - Debuff: None - Buff: None\n'
+                string += s
 
             name = input(string)
             try:

@@ -16,12 +16,12 @@ class Jan(enemy.Enemy):
         return [RighteuosFireOfGlory()]
 
     def _setup_stats(self):
-        HP = 420
-        ATT = 69
-        DEF = 96
-        MAG = 222
-        RES = 333
-        INIT = 2
+        HP = 999
+        ATT = 999
+        DEF = 999
+        MAG = 999
+        RES = 999
+        INIT = 1
 
         return HP, ATT, DEF, MAG, RES, INIT
 
@@ -39,10 +39,10 @@ class Piwo(enemy.Enemy):
         return [HandOfJustice()]
 
     def _setup_stats(self):
-        HP = 444
-        ATT = 400
-        DEF = 42
-        MAG = 222
+        HP = 999
+        ATT = 999
+        DEF = 999
+        MAG = 999
         RES = 999
         INIT = 1
 

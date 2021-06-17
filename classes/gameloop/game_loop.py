@@ -7,17 +7,18 @@ import testing.input_testing as test
 import classes.inventory.manager as inv
 import classes.action.manager as act
 
+
 class Game_loop:
     def __init__(self):
-        self.players = setup.start_setup()
+        self.players, self.quest = setup.start_setup()
         self.flag = ''
-        wld.World()
+        self.world = wld.World(self.quest)
         self.inventory = inv.InventoryManager(self.players)
 
     def run(self):
         endpoint = False
         while not endpoint:
-            story = wld.World().next(self.flag)
+            story = self.world.next(self.flag)
             printf(story['prestring'])
             action = act.ActionManager(story['action'])
             self.players, loot, alive = action.start(self.players)
@@ -36,7 +37,7 @@ class Game_loop:
             if not endpoint:
                 self.players = self.inventory.manage(self.players)
                 for key in keys:
-                    printf(decision[key])
+                    printf(key, ':', decision[key])
                 inp = input(f'What will you choose? {keys} ')
                 inp = test.test_decision(inp, keys)
                 self.flag = self.flag + inp
