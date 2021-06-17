@@ -52,7 +52,7 @@ class BattleManager():
             actor, actor_index = act
             if actor not in self.enemies and actor not in self.players:
                 continue
-            printf('It is {}s turn to attack! [HP: {}]'.format(actor.name, actor.HP))
+            printf('It is {}s turn to attack! [HP: ({}/{})]'.format(actor.name, actor.HP, actor.MAX_HP))
             target, t_id, t_index = self.choose_target(actor)
             skill = self.choose_skill(actor)
             if type(skill) == int:
@@ -72,21 +72,22 @@ class BattleManager():
         if debuff:
             printf('Not yet implemented!')
 
-        dmg *= self._apply_die(luck=actor.LUCK)
-        dmg = np.rint(dmg)
-
         #TODO implement dice feature
-        printf('\n {} deals {} points of damage to {}.\n'.format(actor.name,
-                                                                dmg,
-                                                                target.name))
 
         if target in self.players:
-            current_HP = self.players[target_id].HP
             self.players[target_id].decrease_stat('HP', dmg)
+            current_HP = self.players[target_id].HP
 
         if target in self.enemies:
-            current_HP = self.enemies[target_id].HP
             self.enemies[target_id].decrease_stat('HP', dmg)
+            current_HP = self.enemies[target_id].HP
+
+        if current_HP < 0:
+            current_HP = 0
+
+        printf('\n {} deals {} points of damage to {}. [HP: ({}/{})]\n'.format(actor.name,
+                                                                               dmg,
+                                                                               target.name, current_HP, target.MAX_HP))
 
     def _apply_die(self, luck):
         eye = self.die.roll(luck)
@@ -104,8 +105,7 @@ class BattleManager():
             return 0.85
         else:
             return 1
-   
- 
+
     def act(self, actor, skill, target):
         dmg, des, buff, debuff = skill.get_damage()
         attval = getattr(actor, des)
@@ -117,12 +117,14 @@ class BattleManager():
 
         # HERE IS WHERE THE FANCY MATH STUFF WOULD HAPPEN
 
-        if defval < attval + dmg:
-            val = np.abs(defval - (attval + dmg))
+        eff_att = attval + dmg
+        eff_att *= self._apply_die(actor.LUCK)
+        if defval < eff_att:
+            val = np.abs(defval - eff_att)
         else:
             val = 0
 
-        return val, buff, debuff
+        return int(val), buff, debuff
 
 
     def check_for_dead(self):
@@ -180,7 +182,9 @@ class BattleManager():
                 string = ''' Select (by name) the skill you want to apply
     from the list below:\n \n'''
                 for skill in skill_dict.values():
-                    string += str(skill)
+                    dmg, des, _, _ = skill.get_damage()
+                    eff_dmg = dmg + getattr(player, des)
+                    string += str(skill) + f'\n Effective damage (before damage calc): {eff_dmg}\n'
             
                 name = input(string)
                 try:

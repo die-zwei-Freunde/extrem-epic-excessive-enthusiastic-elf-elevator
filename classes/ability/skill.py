@@ -32,7 +32,7 @@ class Skill():
 
 
     def __repr__(self):
-        return 'Skill: {}\n Damage: {}, Attribute: {}, Cooldown: {}\n'.format(\
+        return 'Skill: {}\n Damage: {}, Attribute: {}, Cooldown: {}'.format(\
             self.name, self.damage, self.attr, self.cooldown)
 
 
