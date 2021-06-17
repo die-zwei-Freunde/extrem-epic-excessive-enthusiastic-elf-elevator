@@ -1,0 +1,13 @@
+{
+    "prestring": "You face the Light-God of this world, Jan. Prepare to die.",
+    "action": {
+        "type": "battle",
+        "enemy": [
+            "GodJan"
+        ],
+        "loot": []
+    },
+    "poststring": "Do not anger the gods of creation.",
+    "decision": {},
+    "Endpoint": true
+}

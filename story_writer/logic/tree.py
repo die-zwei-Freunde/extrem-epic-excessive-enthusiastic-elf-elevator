@@ -6,12 +6,13 @@ from logic.hierarchy import hierarchy_pos
 
 
 def tree():
+
+    tree_G, tree_color, root = path_finder('demo')
+
     G = nx.Graph()
-    G.add_edges_from([(1, 2), (1, 3), (1, 4), (2, 5), (2, 6), (2, 7), (3, 8), (3, 9), (4, 10),
-                      (5, 11), (5, 12), (6, 13)])
-    pos = hierarchy_pos(G, 1)
-    node_color = ['red', 'blue', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red']
-    nx.draw(G, pos=pos, with_labels=True, node_color=node_color)
+    G.add_edges_from(tree_G)
+    pos = hierarchy_pos(G, root)
+    nx.draw(G, pos=pos, with_labels=True, node_color=tree_color)
     plt.show()
 
 
