@@ -21,5 +21,6 @@ class Demon(enemy.Enemy):
         MAG = 5
         RES = 10
         INIT = 6
+        LUCK = 1
 
-        return HP, ATT, DEF, MAG, RES, INIT
+        return HP, ATT, DEF, MAG, RES, INIT, LUCK

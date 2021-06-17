@@ -2,6 +2,8 @@ import numpy as np
 from logger import printf
 import time
 
+from classes.dice import die
+
 
 class BattleManager():
     '''
@@ -11,6 +13,7 @@ class BattleManager():
     def __init__(self, players, enemies):
         self.players = players
         self.enemies = enemies
+        self.die = die.D20()
 
         self.all_players = {}
         for players in self.players:
@@ -69,6 +72,9 @@ class BattleManager():
         if debuff:
             printf('Not yet implemented!')
 
+        dmg *= self._apply_die(luck=actor.LUCK)
+        dmg = np.rint(dmg)
+
         #TODO implement dice feature
         printf('\n {} deals {} points of damage to {}.\n'.format(actor.name,
                                                                 dmg,
@@ -81,6 +87,23 @@ class BattleManager():
         if target in self.enemies:
             current_HP = self.enemies[target_id].HP
             self.enemies[target_id].decrease_stat('HP', dmg)
+
+    def _apply_die(self, luck):
+        eye = self.die.roll(luck)
+
+        # die policy:
+        if eye == 0:
+            printf(' That was a weak attack!')
+            return 0.75
+        elif eye == 20:
+            printf(' That was a critical attack!')
+            return 1.25
+        elif 15 >= eye >= 19:
+            return 1.15
+        elif 2 >= eye >= 5:
+            return 0.85
+        else:
+            return 1
    
  
     def act(self, actor, skill, target):

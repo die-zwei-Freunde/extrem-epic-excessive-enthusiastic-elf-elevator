@@ -22,8 +22,9 @@ class Jan(enemy.Enemy):
         MAG = 999
         RES = 999
         INIT = 1
+        LUCK = 999
 
-        return HP, ATT, DEF, MAG, RES, INIT
+        return HP, ATT, DEF, MAG, RES, INIT, LUCK
 
 
 class Piwo(enemy.Enemy):
@@ -45,5 +46,6 @@ class Piwo(enemy.Enemy):
         MAG = 999
         RES = 999
         INIT = 1
+        LUCK = 999
 
-        return HP, ATT, DEF, MAG, RES, INIT
+        return HP, ATT, DEF, MAG, RES, INIT, LUCK

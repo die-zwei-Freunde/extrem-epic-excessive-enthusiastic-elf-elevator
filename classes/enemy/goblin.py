@@ -22,8 +22,9 @@ class BasicGoblin(enemy.Enemy):
         MAG = 2
         RES = 8
         INIT = 11
+        LUCK = 0
 
-        return HP, ATT, DEF, MAG, RES, INIT
+        return HP, ATT, DEF, MAG, RES, INIT, LUCK
 
 
 class TankGoblin(enemy.Enemy):
@@ -45,5 +46,6 @@ class TankGoblin(enemy.Enemy):
         MAG = 2
         RES = 10
         INIT = 13
+        LUCK = 0
 
-        return HP, ATT, DEF, MAG, RES, INIT
+        return HP, ATT, DEF, MAG, RES, INIT, LUCK

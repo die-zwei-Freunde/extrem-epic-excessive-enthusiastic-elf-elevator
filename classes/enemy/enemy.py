@@ -14,13 +14,14 @@ class Enemy():
         self.name = name
 
         self.HP, self.ATT, self.DEF, \
-                 self.MAG, self.RES, self.INIT = self._setup_stats()
+                 self.MAG, self.RES, self.INIT, self.LUCK = self._setup_stats()
         self.MAX_HP = self.HP
         self.MAX_ATT = self.ATT
         self.MAX_DEF = self.DEF
         self.MAX_MAG = self.MAG
         self.MAX_RES = self.RES
         self.MAX_INIT = self.INIT
+        self.MAX_LUCK = self.LUCK
 
         self.skills = self._setup_skills()
 
@@ -41,7 +42,7 @@ class Enemy():
         return self.skills
 
     def get_stats(self):
-        return self.HP, self.ATT, self.DEF, self.MAG, self.RES, self.INIT
+        return self.HP, self.ATT, self.DEF, self.MAG, self.RES, self.INIT, self.LUCK
 
     def decrease_stat(self, attr, incr):
         setattr(self, attr, getattr(self, attr) - incr)
