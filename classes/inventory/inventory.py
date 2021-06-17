@@ -30,6 +30,9 @@ class Inventory:
             print('You cannot equip this item, your alignment is not right.')
             return player
 
+        if item.equipped:
+            print('This item is already equipped (to someone else, maybe).')
+
         if self.check_if_equippable(player_dict, item_id) and not item.equipped:
             player.equip_item(self.equippables[item_id])
             self.equippables[item_id].equipped = True
@@ -93,6 +96,8 @@ class Inventory:
 
         else:
             raise NotImplementedError(f'Item designation {item.designation} not understood.')
+
+        return item_id
 
     def remove_item(self, item_id):
         if item_id in self.equippables:

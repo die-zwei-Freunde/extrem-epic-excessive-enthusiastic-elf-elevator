@@ -13,7 +13,8 @@ class InventoryManager:
             raise KeyError(f'You may not have added your item {item_id} in the __init__.py of classes.item.')
 
         item = ci.CLASSES[item_id]()
-        self.inventory.add_item(item)
+        item_id = self.inventory.add_item(item)
+        return item_id
 
     def manage(self, players):
         printf('Starting inventory...')
@@ -172,7 +173,7 @@ class InventoryManager:
             elif player.get_alignment_id() == 'fighter':
                 item_id = 'Dagger'
 
-            self.add_item(item_id)
+            item_id = self.add_item(item_id)
             self.inventory.equip_item_to_player(player, item_id)
 
 
